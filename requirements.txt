@@ -1,0 +1,4 @@
+beautifulsoup4==4.14.3
+hyperuseragent==1.1.1
+pydantic==2.12.5
+Requests==2.32.5

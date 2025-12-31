@@ -1,0 +1,1258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CoolText - Minimalist Logo Collection</title>
+    <style>
+@layer properties;
+@layer theme, base, components, utilities;
+@layer theme {
+  :root, :host {
+    --font-sans: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
+      "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+      "Courier New", monospace;
+    --color-green-600: oklch(62.7% 0.194 149.214);
+    --color-blue-50: oklch(97% 0.014 254.604);
+    --color-blue-200: oklch(88.2% 0.059 254.128);
+    --color-blue-300: oklch(80.9% 0.105 251.813);
+    --color-blue-600: oklch(54.6% 0.245 262.881);
+    --color-blue-700: oklch(48.8% 0.243 264.376);
+    --color-slate-50: oklch(98.4% 0.003 247.858);
+    --color-slate-100: oklch(96.8% 0.007 247.896);
+    --color-gray-50: oklch(98.5% 0.002 247.839);
+    --color-gray-100: oklch(96.7% 0.003 264.542);
+    --color-gray-200: oklch(92.8% 0.006 264.531);
+    --color-gray-400: oklch(70.7% 0.022 261.325);
+    --color-gray-500: oklch(55.1% 0.027 264.364);
+    --color-gray-600: oklch(44.6% 0.03 256.802);
+    --color-gray-700: oklch(37.3% 0.034 259.733);
+    --color-gray-900: oklch(21% 0.034 264.665);
+    --color-white: #fff;
+    --spacing: 0.25rem;
+    --container-7xl: 80rem;
+    --text-xs: 0.75rem;
+    --text-xs--line-height: calc(1 / 0.75);
+    --text-sm: 0.875rem;
+    --text-sm--line-height: calc(1.25 / 0.875);
+    --text-xl: 1.25rem;
+    --text-xl--line-height: calc(1.75 / 1.25);
+    --text-5xl: 3rem;
+    --text-5xl--line-height: 1;
+    --text-6xl: 3.75rem;
+    --text-6xl--line-height: 1;
+    --font-weight-light: 300;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+    --font-weight-extrabold: 800;
+    --tracking-tight: -0.025em;
+    --tracking-wider: 0.05em;
+    --radius-lg: 0.5rem;
+    --radius-xl: 0.75rem;
+    --radius-2xl: 1rem;
+    --ease-in: cubic-bezier(0.4, 0, 1, 1);
+    --ease-out: cubic-bezier(0, 0, 0.2, 1);
+    --blur-sm: 8px;
+    --default-transition-duration: 150ms;
+    --default-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    --default-font-family: var(--font-sans);
+    --default-mono-font-family: var(--font-mono);
+  }
+}
+@layer base {
+  *, ::after, ::before, ::backdrop, ::file-selector-button {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border: 0 solid;
+  }
+  html, :host {
+    line-height: 1.5;
+    -webkit-text-size-adjust: 100%;
+    tab-size: 4;
+    font-family: var(--default-font-family, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji");
+    font-feature-settings: var(--default-font-feature-settings, normal);
+    font-variation-settings: var(--default-font-variation-settings, normal);
+    -webkit-tap-highlight-color: transparent;
+  }
+  hr {
+    height: 0;
+    color: inherit;
+    border-top-width: 1px;
+  }
+  abbr:where([title]) {
+    -webkit-text-decoration: underline dotted;
+    text-decoration: underline dotted;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-size: inherit;
+    font-weight: inherit;
+  }
+  a {
+    color: inherit;
+    -webkit-text-decoration: inherit;
+    text-decoration: inherit;
+  }
+  b, strong {
+    font-weight: bolder;
+  }
+  code, kbd, samp, pre {
+    font-family: var(--default-mono-font-family, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace);
+    font-feature-settings: var(--default-mono-font-feature-settings, normal);
+    font-variation-settings: var(--default-mono-font-variation-settings, normal);
+    font-size: 1em;
+  }
+  small {
+    font-size: 80%;
+  }
+  sub, sup {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+  }
+  sub {
+    bottom: -0.25em;
+  }
+  sup {
+    top: -0.5em;
+  }
+  table {
+    text-indent: 0;
+    border-color: inherit;
+    border-collapse: collapse;
+  }
+  :-moz-focusring {
+    outline: auto;
+  }
+  progress {
+    vertical-align: baseline;
+  }
+  summary {
+    display: list-item;
+  }
+  ol, ul, menu {
+    list-style: none;
+  }
+  img, svg, video, canvas, audio, iframe, embed, object {
+    display: block;
+  }
+  img, video {
+    max-width: 100%;
+    height: auto;
+  }
+  button, input, select, optgroup, textarea, ::file-selector-button {
+    font: inherit;
+    font-feature-settings: inherit;
+    font-variation-settings: inherit;
+    letter-spacing: inherit;
+    color: inherit;
+    border-radius: 0;
+    background-color: transparent;
+    opacity: 1;
+  }
+  :where(select:is([multiple], [size])) optgroup {
+    font-weight: bolder;
+  }
+  :where(select:is([multiple], [size])) optgroup option {
+    padding-inline-start: 20px;
+  }
+  ::file-selector-button {
+    margin-inline-end: 4px;
+  }
+  ::placeholder {
+    opacity: 1;
+  }
+  @supports (not (-webkit-appearance: -apple-pay-button))  or (contain-intrinsic-size: 1px) {
+    ::placeholder {
+      color: currentcolor;
+      @supports (color: color-mix(in lab, red, red)) {
+        color: color-mix(in oklab, currentcolor 50%, transparent);
+      }
+    }
+  }
+  textarea {
+    resize: vertical;
+  }
+  ::-webkit-search-decoration {
+    -webkit-appearance: none;
+  }
+  ::-webkit-date-and-time-value {
+    min-height: 1lh;
+    text-align: inherit;
+  }
+  ::-webkit-datetime-edit {
+    display: inline-flex;
+  }
+  ::-webkit-datetime-edit-fields-wrapper {
+    padding: 0;
+  }
+  ::-webkit-datetime-edit, ::-webkit-datetime-edit-year-field, ::-webkit-datetime-edit-month-field, ::-webkit-datetime-edit-day-field, ::-webkit-datetime-edit-hour-field, ::-webkit-datetime-edit-minute-field, ::-webkit-datetime-edit-second-field, ::-webkit-datetime-edit-millisecond-field, ::-webkit-datetime-edit-meridiem-field {
+    padding-block: 0;
+  }
+  ::-webkit-calendar-picker-indicator {
+    line-height: 1;
+  }
+  :-moz-ui-invalid {
+    box-shadow: none;
+  }
+  button, input:where([type="button"], [type="reset"], [type="submit"]), ::file-selector-button {
+    appearance: button;
+  }
+  ::-webkit-inner-spin-button, ::-webkit-outer-spin-button {
+    height: auto;
+  }
+  [hidden]:where(:not([hidden="until-found"])) {
+    display: none !important;
+  }
+}
+@layer utilities {
+  .absolute {
+    position: absolute;
+  }
+  .fixed {
+    position: fixed;
+  }
+  .relative {
+    position: relative;
+  }
+  .top-3 {
+    top: calc(var(--spacing) * 3);
+  }
+  .bottom-8 {
+    bottom: calc(var(--spacing) * 8);
+  }
+  .left-1\/2 {
+    left: calc(1/2 * 100%);
+  }
+  .left-3 {
+    left: calc(var(--spacing) * 3);
+  }
+  .z-10 {
+    z-index: 10;
+  }
+  .z-50 {
+    z-index: 50;
+  }
+  .mx-auto {
+    margin-inline: auto;
+  }
+  .mt-2 {
+    margin-top: calc(var(--spacing) * 2);
+  }
+  .mb-4 {
+    margin-bottom: calc(var(--spacing) * 4);
+  }
+  .mb-16 {
+    margin-bottom: calc(var(--spacing) * 16);
+  }
+  .block {
+    display: block;
+  }
+  .flex {
+    display: flex;
+  }
+  .grid {
+    display: grid;
+  }
+  .hidden {
+    display: none;
+  }
+  .inline-flex {
+    display: inline-flex;
+  }
+  .h-4 {
+    height: calc(var(--spacing) * 4);
+  }
+  .h-48 {
+    height: calc(var(--spacing) * 48);
+  }
+  .max-h-40 {
+    max-height: calc(var(--spacing) * 40);
+  }
+  .max-h-full {
+    max-height: 100%;
+  }
+  .min-h-screen {
+    min-height: 100vh;
+  }
+  .w-4 {
+    width: calc(var(--spacing) * 4);
+  }
+  .w-full {
+    width: 100%;
+  }
+  .max-w-7xl {
+    max-width: var(--container-7xl);
+  }
+  .max-w-full {
+    max-width: 100%;
+  }
+  .flex-1 {
+    flex: 1;
+  }
+  .flex-shrink-0 {
+    flex-shrink: 0;
+  }
+  .-translate-x-1\/2 {
+    --tw-translate-x: calc(calc(1/2 * 100%) * -1);
+    translate: var(--tw-translate-x) var(--tw-translate-y);
+  }
+  .transform {
+    transform: var(--tw-rotate-x,) var(--tw-rotate-y,) var(--tw-rotate-z,) var(--tw-skew-x,) var(--tw-skew-y,);
+  }
+  .cursor-pointer {
+    cursor: pointer;
+  }
+  .list-none {
+    list-style-type: none;
+  }
+  .grid-cols-1 {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+  .grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .items-center {
+    align-items: center;
+  }
+  .justify-between {
+    justify-content: space-between;
+  }
+  .justify-center {
+    justify-content: center;
+  }
+  .gap-1\.5 {
+    gap: calc(var(--spacing) * 1.5);
+  }
+  .gap-2 {
+    gap: calc(var(--spacing) * 2);
+  }
+  .gap-6 {
+    gap: calc(var(--spacing) * 6);
+  }
+  .space-y-2 {
+    :where(& > :not(:last-child)) {
+      --tw-space-y-reverse: 0;
+      margin-block-start: calc(calc(var(--spacing) * 2) * var(--tw-space-y-reverse));
+      margin-block-end: calc(calc(var(--spacing) * 2) * calc(1 - var(--tw-space-y-reverse)));
+    }
+  }
+  .space-y-4 {
+    :where(& > :not(:last-child)) {
+      --tw-space-y-reverse: 0;
+      margin-block-start: calc(calc(var(--spacing) * 4) * var(--tw-space-y-reverse));
+      margin-block-end: calc(calc(var(--spacing) * 4) * calc(1 - var(--tw-space-y-reverse)));
+    }
+  }
+  .truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .overflow-hidden {
+    overflow: hidden;
+  }
+  .overflow-y-auto {
+    overflow-y: auto;
+  }
+  .rounded {
+    border-radius: 0.25rem;
+  }
+  .rounded-2xl {
+    border-radius: var(--radius-2xl);
+  }
+  .rounded-lg {
+    border-radius: var(--radius-lg);
+  }
+  .rounded-xl {
+    border-radius: var(--radius-xl);
+  }
+  .border {
+    border-style: var(--tw-border-style);
+    border-width: 1px;
+  }
+  .border-b {
+    border-bottom-style: var(--tw-border-style);
+    border-bottom-width: 1px;
+  }
+  .border-gray-100 {
+    border-color: var(--color-gray-100);
+  }
+  .border-gray-200 {
+    border-color: var(--color-gray-200);
+  }
+  .bg-blue-600 {
+    background-color: var(--color-blue-600);
+  }
+  .bg-gray-50 {
+    background-color: var(--color-gray-50);
+  }
+  .bg-gray-900 {
+    background-color: var(--color-gray-900);
+  }
+  .bg-gray-900\/80 {
+    background-color: color-mix(in srgb, oklch(21% 0.034 264.665) 80%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      background-color: color-mix(in oklab, var(--color-gray-900) 80%, transparent);
+    }
+  }
+  .bg-white {
+    background-color: var(--color-white);
+  }
+  .bg-gradient-to-br {
+    --tw-gradient-position: to bottom right in oklab;
+    background-image: linear-gradient(var(--tw-gradient-stops));
+  }
+  .from-gray-50 {
+    --tw-gradient-from: var(--color-gray-50);
+    --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
+  }
+  .from-slate-50 {
+    --tw-gradient-from: var(--color-slate-50);
+    --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
+  }
+  .via-blue-50 {
+    --tw-gradient-via: var(--color-blue-50);
+    --tw-gradient-via-stops: var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-via) var(--tw-gradient-via-position), var(--tw-gradient-to) var(--tw-gradient-to-position);
+    --tw-gradient-stops: var(--tw-gradient-via-stops);
+  }
+  .to-gray-100 {
+    --tw-gradient-to: var(--color-gray-100);
+    --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
+  }
+  .to-slate-100 {
+    --tw-gradient-to: var(--color-slate-100);
+    --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
+  }
+  .object-contain {
+    object-fit: contain;
+  }
+  .p-5 {
+    padding: calc(var(--spacing) * 5);
+  }
+  .p-6 {
+    padding: calc(var(--spacing) * 6);
+  }
+  .px-2 {
+    padding-inline: calc(var(--spacing) * 2);
+  }
+  .px-2\.5 {
+    padding-inline: calc(var(--spacing) * 2.5);
+  }
+  .px-3 {
+    padding-inline: calc(var(--spacing) * 3);
+  }
+  .px-4 {
+    padding-inline: calc(var(--spacing) * 4);
+  }
+  .px-6 {
+    padding-inline: calc(var(--spacing) * 6);
+  }
+  .py-1 {
+    padding-block: calc(var(--spacing) * 1);
+  }
+  .py-1\.5 {
+    padding-block: calc(var(--spacing) * 1.5);
+  }
+  .py-2 {
+    padding-block: calc(var(--spacing) * 2);
+  }
+  .py-2\.5 {
+    padding-block: calc(var(--spacing) * 2.5);
+  }
+  .py-3 {
+    padding-block: calc(var(--spacing) * 3);
+  }
+  .py-12 {
+    padding-block: calc(var(--spacing) * 12);
+  }
+  .text-center {
+    text-align: center;
+  }
+  .font-mono {
+    font-family: var(--font-mono);
+  }
+  .font-sans {
+    font-family: var(--font-sans);
+  }
+  .text-5xl {
+    font-size: var(--text-5xl);
+    line-height: var(--tw-leading, var(--text-5xl--line-height));
+  }
+  .text-sm {
+    font-size: var(--text-sm);
+    line-height: var(--tw-leading, var(--text-sm--line-height));
+  }
+  .text-xl {
+    font-size: var(--text-xl);
+    line-height: var(--tw-leading, var(--text-xl--line-height));
+  }
+  .text-xs {
+    font-size: var(--text-xs);
+    line-height: var(--tw-leading, var(--text-xs--line-height));
+  }
+  .font-extrabold {
+    --tw-font-weight: var(--font-weight-extrabold);
+    font-weight: var(--font-weight-extrabold);
+  }
+  .font-light {
+    --tw-font-weight: var(--font-weight-light);
+    font-weight: var(--font-weight-light);
+  }
+  .font-medium {
+    --tw-font-weight: var(--font-weight-medium);
+    font-weight: var(--font-weight-medium);
+  }
+  .font-semibold {
+    --tw-font-weight: var(--font-weight-semibold);
+    font-weight: var(--font-weight-semibold);
+  }
+  .tracking-tight {
+    --tw-tracking: var(--tracking-tight);
+    letter-spacing: var(--tracking-tight);
+  }
+  .tracking-wider {
+    --tw-tracking: var(--tracking-wider);
+    letter-spacing: var(--tracking-wider);
+  }
+  .text-blue-600 {
+    color: var(--color-blue-600);
+  }
+  .text-gray-400 {
+    color: var(--color-gray-400);
+  }
+  .text-gray-500 {
+    color: var(--color-gray-500);
+  }
+  .text-gray-600 {
+    color: var(--color-gray-600);
+  }
+  .text-gray-700 {
+    color: var(--color-gray-700);
+  }
+  .text-gray-900 {
+    color: var(--color-gray-900);
+  }
+  .text-green-600 {
+    color: var(--color-green-600);
+  }
+  .text-white {
+    color: var(--color-white);
+  }
+  .uppercase {
+    text-transform: uppercase;
+  }
+  .shadow-2xl {
+    --tw-shadow: 0 25px 50px -12px var(--tw-shadow-color, rgb(0 0 0 / 0.25));
+    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+  }
+  .shadow-sm {
+    --tw-shadow: 0 1px 3px 0 var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 1px 2px -1px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
+    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+  }
+  .backdrop-blur-sm {
+    --tw-backdrop-blur: blur(var(--blur-sm));
+    -webkit-backdrop-filter: var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);
+    backdrop-filter: var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);
+  }
+  .transition-all {
+    transition-property: all;
+    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
+    transition-duration: var(--tw-duration, var(--default-transition-duration));
+  }
+  .transition-colors {
+    transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to;
+    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
+    transition-duration: var(--tw-duration, var(--default-transition-duration));
+  }
+  .transition-transform {
+    transition-property: transform, translate, scale, rotate;
+    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
+    transition-duration: var(--tw-duration, var(--default-transition-duration));
+  }
+  .duration-200 {
+    --tw-duration: 200ms;
+    transition-duration: 200ms;
+  }
+  .duration-300 {
+    --tw-duration: 300ms;
+    transition-duration: 300ms;
+  }
+  .ease-in {
+    --tw-ease: var(--ease-in);
+    transition-timing-function: var(--ease-in);
+  }
+  .ease-out {
+    --tw-ease: var(--ease-out);
+    transition-timing-function: var(--ease-out);
+  }
+  .group-open\/details\:rotate-180 {
+    &:is(:where(.group\/details):is([open], :popover-open, :open) *) {
+      rotate: 180deg;
+    }
+  }
+  .group-hover\:scale-105 {
+    &:is(:where(.group):hover *) {
+      @media (hover: hover) {
+        --tw-scale-x: 105%;
+        --tw-scale-y: 105%;
+        --tw-scale-z: 105%;
+        scale: var(--tw-scale-x) var(--tw-scale-y);
+      }
+    }
+  }
+  .group-hover\/copy\:text-blue-600 {
+    &:is(:where(.group\/copy):hover *) {
+      @media (hover: hover) {
+        color: var(--color-blue-600);
+      }
+    }
+  }
+  .hover\:-translate-y-1 {
+    &:hover {
+      @media (hover: hover) {
+        --tw-translate-y: calc(var(--spacing) * -1);
+        translate: var(--tw-translate-x) var(--tw-translate-y);
+      }
+    }
+  }
+  .hover\:border-blue-200 {
+    &:hover {
+      @media (hover: hover) {
+        border-color: var(--color-blue-200);
+      }
+    }
+  }
+  .hover\:border-blue-300 {
+    &:hover {
+      @media (hover: hover) {
+        border-color: var(--color-blue-300);
+      }
+    }
+  }
+  .hover\:bg-blue-50 {
+    &:hover {
+      @media (hover: hover) {
+        background-color: var(--color-blue-50);
+      }
+    }
+  }
+  .hover\:bg-blue-700 {
+    &:hover {
+      @media (hover: hover) {
+        background-color: var(--color-blue-700);
+      }
+    }
+  }
+  .hover\:text-gray-700 {
+    &:hover {
+      @media (hover: hover) {
+        color: var(--color-gray-700);
+      }
+    }
+  }
+  .hover\:shadow-xl {
+    &:hover {
+      @media (hover: hover) {
+        --tw-shadow: 0 20px 25px -5px var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 8px 10px -6px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
+        box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+      }
+    }
+  }
+  .sm\:px-6 {
+    @media (width >= 40rem) {
+      padding-inline: calc(var(--spacing) * 6);
+    }
+  }
+  .sm\:py-16 {
+    @media (width >= 40rem) {
+      padding-block: calc(var(--spacing) * 16);
+    }
+  }
+  .sm\:text-6xl {
+    @media (width >= 40rem) {
+      font-size: var(--text-6xl);
+      line-height: var(--tw-leading, var(--text-6xl--line-height));
+    }
+  }
+  .md\:grid-cols-2 {
+    @media (width >= 48rem) {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+  .lg\:grid-cols-3 {
+    @media (width >= 64rem) {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+  .lg\:px-8 {
+    @media (width >= 64rem) {
+      padding-inline: calc(var(--spacing) * 8);
+    }
+  }
+}
+@property --tw-translate-x {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0;
+}
+@property --tw-translate-y {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0;
+}
+@property --tw-translate-z {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0;
+}
+@property --tw-rotate-x {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-rotate-y {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-rotate-z {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-skew-x {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-skew-y {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-space-y-reverse {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0;
+}
+@property --tw-border-style {
+  syntax: "*";
+  inherits: false;
+  initial-value: solid;
+}
+@property --tw-gradient-position {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-gradient-from {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #0000;
+}
+@property --tw-gradient-via {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #0000;
+}
+@property --tw-gradient-to {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #0000;
+}
+@property --tw-gradient-stops {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-gradient-via-stops {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-gradient-from-position {
+  syntax: "<length-percentage>";
+  inherits: false;
+  initial-value: 0%;
+}
+@property --tw-gradient-via-position {
+  syntax: "<length-percentage>";
+  inherits: false;
+  initial-value: 50%;
+}
+@property --tw-gradient-to-position {
+  syntax: "<length-percentage>";
+  inherits: false;
+  initial-value: 100%;
+}
+@property --tw-font-weight {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-tracking {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-shadow {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0 0 #0000;
+}
+@property --tw-shadow-color {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-shadow-alpha {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 100%;
+}
+@property --tw-inset-shadow {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0 0 #0000;
+}
+@property --tw-inset-shadow-color {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-inset-shadow-alpha {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 100%;
+}
+@property --tw-ring-color {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-ring-shadow {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0 0 #0000;
+}
+@property --tw-inset-ring-color {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-inset-ring-shadow {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0 0 #0000;
+}
+@property --tw-ring-inset {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-ring-offset-width {
+  syntax: "<length>";
+  inherits: false;
+  initial-value: 0px;
+}
+@property --tw-ring-offset-color {
+  syntax: "*";
+  inherits: false;
+  initial-value: #fff;
+}
+@property --tw-ring-offset-shadow {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0 0 #0000;
+}
+@property --tw-backdrop-blur {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-backdrop-brightness {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-backdrop-contrast {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-backdrop-grayscale {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-backdrop-hue-rotate {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-backdrop-invert {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-backdrop-opacity {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-backdrop-saturate {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-backdrop-sepia {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-duration {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-ease {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-scale-x {
+  syntax: "*";
+  inherits: false;
+  initial-value: 1;
+}
+@property --tw-scale-y {
+  syntax: "*";
+  inherits: false;
+  initial-value: 1;
+}
+@property --tw-scale-z {
+  syntax: "*";
+  inherits: false;
+  initial-value: 1;
+}
+@layer properties {
+  @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))) {
+    *, ::before, ::after, ::backdrop {
+      --tw-translate-x: 0;
+      --tw-translate-y: 0;
+      --tw-translate-z: 0;
+      --tw-rotate-x: initial;
+      --tw-rotate-y: initial;
+      --tw-rotate-z: initial;
+      --tw-skew-x: initial;
+      --tw-skew-y: initial;
+      --tw-space-y-reverse: 0;
+      --tw-border-style: solid;
+      --tw-gradient-position: initial;
+      --tw-gradient-from: #0000;
+      --tw-gradient-via: #0000;
+      --tw-gradient-to: #0000;
+      --tw-gradient-stops: initial;
+      --tw-gradient-via-stops: initial;
+      --tw-gradient-from-position: 0%;
+      --tw-gradient-via-position: 50%;
+      --tw-gradient-to-position: 100%;
+      --tw-font-weight: initial;
+      --tw-tracking: initial;
+      --tw-shadow: 0 0 #0000;
+      --tw-shadow-color: initial;
+      --tw-shadow-alpha: 100%;
+      --tw-inset-shadow: 0 0 #0000;
+      --tw-inset-shadow-color: initial;
+      --tw-inset-shadow-alpha: 100%;
+      --tw-ring-color: initial;
+      --tw-ring-shadow: 0 0 #0000;
+      --tw-inset-ring-color: initial;
+      --tw-inset-ring-shadow: 0 0 #0000;
+      --tw-ring-inset: initial;
+      --tw-ring-offset-width: 0px;
+      --tw-ring-offset-color: #fff;
+      --tw-ring-offset-shadow: 0 0 #0000;
+      --tw-backdrop-blur: initial;
+      --tw-backdrop-brightness: initial;
+      --tw-backdrop-contrast: initial;
+      --tw-backdrop-grayscale: initial;
+      --tw-backdrop-hue-rotate: initial;
+      --tw-backdrop-invert: initial;
+      --tw-backdrop-opacity: initial;
+      --tw-backdrop-saturate: initial;
+      --tw-backdrop-sepia: initial;
+      --tw-duration: initial;
+      --tw-ease: initial;
+      --tw-scale-x: 1;
+      --tw-scale-y: 1;
+      --tw-scale-z: 1;
+    }
+  }
+}
+
+    </style>
+    <style>
+        .toast-enter {
+            animation: slideUpFade 0.3s ease-out forwards;
+        }
+        .toast-exit {
+            animation: slideDownFade 0.3s ease-in forwards;
+        }
+        @keyframes slideUpFade {
+            from { opacity: 0; transform: translate(-50%, 20px); }
+            to { opacity: 1; transform: translate(-50%, 0); }
+        }
+        @keyframes slideDownFade {
+            from { opacity: 1; transform: translate(-50%, 0); }
+            to { opacity: 0; transform: translate(-50%, 20px); }
+        }
+        /* Icon styling to match Lucide default */
+        svg { vertical-align: middle; }
+    </style>
+</head>
+<body class="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-slate-100 font-sans text-gray-900">
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+        
+        <header class="text-center mb-16">
+            <div class="inline-flex items-center gap-2 mb-4">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-blue-600"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>
+                <h1 class="text-5xl sm:text-6xl font-extrabold text-gray-900 tracking-tight">
+                    CoolText
+                </h1>
+            </div>
+            <p class="text-xl text-gray-600 font-light" style="transform: translateX(4.5%) translateY(-50%);">
+                <a href="https://github.com/TheHritu" class="text-blue-600 hover:none">github@TheHritu</a>
+            </p>
+        </header>
+
+        <div id="logo-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+            </div>
+    </div>
+
+    <div id="toast" class="hidden fixed bottom-8 left-1/2 -translate-x-1/2 z-50">
+        <div class="px-6 py-3 bg-gray-900 text-white rounded-xl shadow-2xl flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            <span class="font-medium">Copied to clipboard!</span>
+        </div>
+    </div>
+
+    <script>
+        const logoData = {
+            "2222569522": { "LogoLink": "https://cooltext.com/Logo-Design-Happy-New-Year", "PreviewImage": "https://ct.mob0.com/Previews/2222569522.png", "defaults": { "FontSize": "120", "FileFormat": "6", "BackgroundColor_color": "#FFFFFF", "Color1_color": "#C8C8C8", "Color2_color": "#FF0000", "Boolean1": "on", "Boolean2": "on", "Integer5": "0", "Integer6": "75", "Integer7": "0", "Integer8": "0", "Integer9": "0", "Integer12": "on", "Integer13": "on", "Integer14_color": "#000000" } },
+            "4": { "LogoLink": "https://cooltext.com/Logo-Design-Burning", "PreviewImage": "https://ct.mob0.com/Previews/4.gif", "defaults": { "FontSize": "70", "BackgroundColor_color": "#FFFFFF", "Color1_color": "#FF0000", "Boolean1": "on", "Integer1": "15", "Integer9": "0", "Integer12": "on", "Integer13": "on" } },
+            "758279718": { "LogoLink": "https://cooltext.com/Logo-Design-Keen", "PreviewImage": "https://ct.mob0.com/Previews/758279718.png", "defaults": { "FontSize": "70", "FileFormat": "6", "BackgroundColor_color": "#FFFFFF", "Color1_color": "#FFBC6B", "Color2_color": "#FF8400", "Color3_color": "#000000", "Integer1": "2", "Integer5": "0", "Integer6": "75", "Integer7": "0", "Integer8": "0", "Integer9": "0", "Integer12": "on", "Integer13": "on", "Integer14_color": "#000000" } },
+            "780833150": { "LogoLink": "https://cooltext.com/Logo-Design-Skate", "PreviewImage": "https://ct.mob0.com/Previews/780833150.png", "defaults": { "FontSize": "70", "FileFormat": "6", "BackgroundColor_color": "#FFFFFF", "Color1_color": "#83D6FC", "Color2_color": "#0088FF", "Color3_color": "#000000", "Integer1": "5", "Integer5": "2", "Integer6": "75", "Integer7": "1", "Integer8": "1", "Integer9": "0", "Integer12": "on", "Integer13": "on", "Integer14_color": "#000000" } },
+            "1009848424": { "LogoLink": "https://cooltext.com/Logo-Design-Fun", "PreviewImage": "https://ct.mob0.com/Previews/1009848424.png", "defaults": { "FontSize": "70", "FileFormat": "6", "BackgroundColor_color": "#FFFFFF", "Color1_color": "#F2D324", "Color2_color": "#F02B2B", "Color3_color": "#000000", "Integer1": "3", "Integer5": "2", "Integer6": "75", "Integer7": "8", "Integer8": "8", "Integer9": "0", "Integer12": "on", "Integer13": "on", "Integer14_color": "#000000" } },
+            "732438332": { "LogoLink": "https://cooltext.com/Logo-Design-White", "PreviewImage": "https://ct.mob0.com/Previews/732438332.png", "defaults": { "FontSize": "70", "FileFormat": "6", "BackgroundColor_color": "#FFFFFF", "Color1_color": "#000000", "Color2_color": "#FFFFFF", "Color3_color": "#FFFFFF", "Integer5": "0", "Integer6": "75", "Integer7": "0", "Integer8": "0", "Integer9": "0", "Integer12": "on", "Integer13": "on", "Integer14_color": "#000000" } },
+            "4516516448": { "LogoLink": "https://cooltext.com/Logo-Design-SAINT", "PreviewImage": "https://ct.mob0.com/Previews/4516516448.png", "defaults": { "FontSize": "120", "FileFormat": "6", "BackgroundColor_color": "#FFFFFF" } },
+            "2975689126": { "LogoLink": "https://cooltext.com/Logo-Design-Tribal", "PreviewImage": "https://ct.mob0.com/Previews/2975689126.png", "defaults": { "FontSize": "120", "FileFormat": "6", "BackgroundColor_color": "#000000", "Boolean1": "on", "Boolean3": "on", "Integer1": "7", "Integer5": "2", "Integer6": "60", "Integer7": "2", "Integer8": "2", "Integer9": "6", "Integer12": "on", "Integer13": "on", "Integer14_color": "#000000" } },
+            "732443655": { "LogoLink": "https://cooltext.com/Logo-Design-Gold-Trim", "PreviewImage": "https://ct.mob0.com/Previews/732443655.png", "defaults": { "FontSize": "70", "FileFormat": "6", "BackgroundColor_color": "#FFFFFF", "Color1_color": "#E6AF37", "Color2_color": "#E6A61C", "Integer1": "135", "Integer2": "45", "Integer3": "2", "Integer5": "2", "Integer6": "40", "Integer7": "2", "Integer8": "2", "Integer9": "0", "Integer12": "on", "Integer13": "on", "Integer14_color": "#000000" } },
+            "2222568262": { "LogoLink": "https://cooltext.com/Logo-Design-Merry-Christmas", "PreviewImage": "https://ct.mob0.com/Previews/2222568262.png", "defaults": { "FontSize": "120", "FileFormat": "6", "BackgroundColor_color": "#FFFFFF" } },
+            "2650967346": { "LogoLink": "https://cooltext.com/Logo-Design-Supernova", "PreviewImage": "https://ct.mob0.com/Previews/2650967346.png", "defaults": { "FontSize": "120", "FileFormat": "6", "BackgroundColor_color": "#FFFFFF" } },
+            "45": { "LogoLink": "https://cooltext.com/Logo-Design-Fantasy", "PreviewImage": "https://ct.mob0.com/Previews/45.png", "defaults": { "FontSize": "70", "FileFormat": "6", "BackgroundColor_color": "#FFFFFF", "Color1_color": "#D5CE5F", "Color2_color": "#D5CE5F", "Integer1": "135", "Integer2": "45", "Integer3": "3", "Integer5": "2", "Integer6": "50", "Integer7": "3", "Integer8": "3", "Integer9": "0", "Integer12": "on", "Integer13": "on", "Integer14_color": "#000000" } },
+            "4618063429": { "LogoLink": "https://cooltext.com/Logo-Design-OZONE", "PreviewImage": "https://ct.mob0.com/Previews/4618063429.png", "defaults": { "FontSize": "120", "FileFormat": "6", "BackgroundColor_color": "#FFFFFF" } },
+            "1516212090": { "LogoLink": "https://cooltext.com/Logo-Design-Happy-Joy", "PreviewImage": "https://ct.mob0.com/Previews/1516212090.png", "defaults": { "FontSize": "120", "FileFormat": "6", "BackgroundColor_color": "#FFFFFF" } },
+            "732429307": { "LogoLink": "https://cooltext.com/Logo-Design-Legal", "PreviewImage": "https://ct.mob0.com/Previews/732429307.png", "defaults": { "FontSize": "70", "FileFormat": "6", "BackgroundColor_color": "#FFFFFF", "Color1_color": "#7F7F7F", "Color2_color": "#FFFFFF", "Integer5": "2", "Integer6": "100", "Integer7": "0", "Integer8": "0", "Integer9": "0", "Integer12": "on", "Integer13": "on", "Integer14_color": "#000000" } },
+            "21": { "LogoLink": "https://cooltext.com/Logo-Design-Simple", "PreviewImage": "https://ct.mob0.com/Previews/21.png", "defaults": { "FontSize": "70", "FileFormat": "6", "BackgroundColor_color": "#FFFFFF", "Color1_color": "#0514F2", "Integer5": "2", "Integer6": "60", "Integer7": "2", "Integer8": "2", "Integer9": "0", "Integer12": "on", "Integer13": "on", "Integer14_color": "#000000" } },
+            "17": { "LogoLink": "https://cooltext.com/Logo-Design-Slab", "PreviewImage": "https://ct.mob0.com/Previews/17.png", "defaults": { "FontSize": "70", "FileFormat": "6", "BackgroundColor_color": "#FFFFFF", "Color1_color": "#EFE66E", "Boolean1": "on", "Integer1": "100", "Integer5": "2", "Integer6": "75", "Integer7": "0", "Integer8": "0", "Integer9": "0", "Integer12": "on", "Integer13": "on", "Integer14_color": "#000000" } },
+            "4624104889": { "LogoLink": "https://cooltext.com/Logo-Design-Ballerina", "PreviewImage": "https://ct.mob0.com/Previews/4624104889.png", "defaults": { "FontSize": "120", "FileFormat": "6", "BackgroundColor_color": "#030000" } },
+            "18": { "LogoLink": "https://cooltext.com/Logo-Design-Neon", "PreviewImage": "https://ct.mob0.com/Previews/18.png", "defaults": { "FontSize": "70", "FileFormat": "6", "BackgroundColor_color": "#FFFFFF", "Color1_color": "#23D3FF", "Integer5": "1", "Integer6": "85", "Integer7": "3", "Integer8": "3", "Integer9": "0", "Integer12": "on", "Integer13": "on", "Integer14_color": "#000000" } },
+            "25": { "LogoLink": "https://cooltext.com/Logo-Design-Outline", "PreviewImage": "https://ct.mob0.com/Previews/25.png", "defaults": { "FontSize": "70", "FileFormat": "6", "BackgroundColor_color": "#FFFFFF", "Color1_color": "#FFFFFF", "Color2_color": "#6495ED", "Color3_color": "#000000", "Boolean1": "on", "Integer1": "1", "Integer5": "0", "Integer6": "75", "Integer7": "0", "Integer8": "0", "Integer9": "0", "Integer12": "on", "Integer13": "on", "Integer14_color": "#000000" } },
+            "30": { "LogoLink": "https://cooltext.com/Logo-Design-Glossy", "PreviewImage": "https://ct.mob0.com/Previews/30.png", "defaults": { "FontSize": "70", "FileFormat": "6", "BackgroundColor_color": "#FFFFFF", "Integer1": "5", "Integer5": "3", "Integer6": "30", "Integer7": "4", "Integer8": "3", "Integer9": "0", "Integer12": "on", "Integer13": "on", "Integer14_color": "#000000" } },
+            "4112270507": { "LogoLink": "https://cooltext.com/Logo-Design-Trogdor", "PreviewImage": "https://ct.mob0.com/Previews/4112270507.png", "defaults": { "FontSize": "120", "FileFormat": "6", "BackgroundColor_color": "#000000", "Integer1": "3", "Integer5": "4", "Integer6": "100", "Integer7": "0", "Integer8": "0", "Integer9": "0", "Integer12": "on", "Integer13": "on", "Integer14_color": "#AD0000" } },
+            "13": { "LogoLink": "https://cooltext.com/Logo-Design-Fire", "PreviewImage": "https://ct.mob0.com/Previews/13.png", "defaults": { "FontSize": "70", "FileFormat": "6", "BackgroundColor_color": "#FFFFFF", "Integer5": "0", "Integer6": "75", "Integer7": "0", "Integer8": "0", "Integer9": "0", "Integer12": "on", "Integer13": "on", "Integer14_color": "#000000" } },
+            "2655376160": { "LogoLink": "https://cooltext.com/Logo-Design-Spaced-Out", "PreviewImage": "https://ct.mob0.com/Previews/2655376160.png", "defaults": { "FontSize": "120", "FileFormat": "6", "BackgroundColor_color": "#FFFFFF" } },
+            "4113131447": { "LogoLink": "https://cooltext.com/Logo-Design-Tesla", "PreviewImage": "https://ct.mob0.com/Previews/4113131447.png", "defaults": { "FontSize": "120", "FileFormat": "6", "BackgroundColor_color": "#FFFFFF" } },
+            "2854656927": { "LogoLink": "https://cooltext.com/Logo-Design-Miami", "PreviewImage": "https://ct.mob0.com/Previews/2854656927.png", "defaults": { "FontSize": "120", "FileFormat": "6", "BackgroundColor_color": "#FFFFFF", "Integer1": "5", "Integer5": "2", "Integer6": "75", "Integer7": "1", "Integer8": "1", "Integer9": "0", "Integer12": "on", "Integer13": "on", "Integer14_color": "#000000" } },
+            "37": { "LogoLink": "https://cooltext.com/Logo-Design-iText", "PreviewImage": "https://ct.mob0.com/Previews/37.png", "defaults": { "FontSize": "70", "FileFormat": "6", "BackgroundColor_color": "#FFFFFF", "Color1_color": "#669900", "Integer5": "0", "Integer6": "75", "Integer7": "0", "Integer8": "0", "Integer9": "0", "Integer12": "on", "Integer13": "on", "Integer14_color": "#000000" } },
+            "46": { "LogoLink": "https://cooltext.com/Logo-Design-Gold-Outline", "PreviewImage": "https://ct.mob0.com/Previews/46.png", "defaults": { "FontSize": "70", "FileFormat": "6", "BackgroundColor_color": "#FFFFFF" } },
+            "2975674466": { "LogoLink": "https://cooltext.com/Logo-Design-Dark-Magic", "PreviewImage": "https://ct.mob0.com/Previews/2975674466.png", "defaults": { "FontSize": "120", "FileFormat": "6", "BackgroundColor_color": "#FFFFFF", "Integer1": "5", "Integer5": "2", "Integer6": "75", "Integer7": "1", "Integer8": "1", "Integer9": "0", "Integer12": "on", "Integer13": "on", "Integer14_color": "#000000" } },
+            "4112260450": { "LogoLink": "https://cooltext.com/Logo-Design-Romance", "PreviewImage": "https://ct.mob0.com/Previews/4112260450.png", "defaults": { "FontSize": "120", "FileFormat": "6", "BackgroundColor_color": "#FFFFFF", "Color1_color": "#FFFFFF", "Color2_color": "#0646CF", "Color3_color": "#C8D8FA", "Integer1": "1", "Integer5": "2", "Integer6": "30", "Integer7": "2", "Integer8": "2", "Integer9": "0", "Integer12": "on", "Integer13": "on", "Integer14_color": "#000000" } },
+            "852819205": { "LogoLink": "https://cooltext.com/Logo-Design-Gunmetal", "PreviewImage": "https://ct.mob0.com/Previews/852819205.png", "defaults": { "FontSize": "70", "FileFormat": "6", "BackgroundColor_color": "#FFFFFF", "Color1_color": "#FAFAFA", "Boolean2": "on", "Integer5": "4", "Integer6": "70", "Integer7": "0", "Integer8": "0", "Integer9": "0", "Integer12": "on", "Integer13": "on", "Integer14_color": "#000000" } },
+            "4618529410": { "LogoLink": "https://cooltext.com/Logo-Design-Invaders", "PreviewImage": "https://ct.mob0.com/Previews/4618529410.png", "defaults": { "FontSize": "120", "FileFormat": "6", "BackgroundColor_color": "#030000" } },
+            "732440996": { "LogoLink": "https://cooltext.com/Logo-Design-Epic-Stone", "PreviewImage": "https://ct.mob0.com/Previews/732440996.png", "defaults": { "FontSize": "70", "FileFormat": "6", "BackgroundColor_color": "#FFFFFF", "Boolean3": "on", "Integer1": "5", "Integer5": "3", "Integer6": "30", "Integer7": "2", "Integer8": "2", "Integer9": "0", "Integer12": "on", "Integer13": "on", "Integer14_color": "#000000" } },
+            "1": { "LogoLink": "https://cooltext.com/Logo-Design-Alien-Glow", "PreviewImage": "https://ct.mob0.com/Previews/1.png", "defaults": { "FontSize": "70", "FileFormat": "6", "BackgroundColor_color": "#FFFFFF", "Color1_color": "#3FFA00", "Color2_color": "#000000", "Color3_color": "#4F4F4F", "Integer5": "0", "Integer6": "75", "Integer7": "0", "Integer8": "0", "Integer9": "0", "Integer12": "on", "Integer13": "on", "Integer14_color": "#000000" } },
+            "4112238638": { "LogoLink": "https://cooltext.com/Logo-Design-Astroman", "PreviewImage": "https://ct.mob0.com/Previews/4112238638.png", "defaults": { "FontSize": "120", "FileFormat": "6", "BackgroundColor_color": "#FFFFFF", "Integer1": "3", "Integer5": "3", "Integer6": "30", "Integer7": "2", "Integer8": "2", "Integer9": "0", "Integer12": "on", "Integer13": "on", "Integer14_color": "#000000" } },
+            "791030843": { "LogoLink": "https://cooltext.com/Logo-Design-Easy", "PreviewImage": "https://ct.mob0.com/Previews/791030843.png", "defaults": { "FontSize": "70", "FileFormat": "6", "BackgroundColor_color": "#FFFFFF", "Color1_color": "#004A99", "Integer5": "4", "Integer6": "60", "Integer7": "0", "Integer8": "0", "Integer9": "0", "Integer12": "on", "Integer13": "on", "Integer14_color": "#000000" } },
+            "789574607": { "LogoLink": "https://cooltext.com/Logo-Design-Groovy", "PreviewImage": "https://ct.mob0.com/Previews/789574607.png", "defaults": { "FontSize": "120", "FileFormat": "6", "BackgroundColor_color": "#FFFFFF", "Color1_color": "#8020D9", "Color2_color": "#D8B0FF", "Integer5": "2", "Integer6": "50", "Integer7": "0", "Integer8": "0", "Integer9": "0", "Integer12": "on", "Integer13": "on", "Integer14_color": "#000000" } },
+            "4528246004": { "LogoLink": "https://cooltext.com/Logo-Design-Coffee-Cup", "PreviewImage": "https://ct.mob0.com/Previews/4528246004.png", "defaults": { "FontSize": "120", "FileFormat": "6", "BackgroundColor_color": "#FFFFFF" } },
+            "4516518098": { "LogoLink": "https://cooltext.com/Logo-Design-Gelatin", "PreviewImage": "https://ct.mob0.com/Previews/4516518098.png", "defaults": { "FontSize": "120", "FileFormat": "6", "BackgroundColor_color": "#FFFFFF" } },
+            "26": { "LogoLink": "https://cooltext.com/Logo-Design-Animated-Glow", "PreviewImage": "https://ct.mob0.com/Previews/26.gif", "defaults": { "FontSize": "70", "BackgroundColor_color": "#FFFFFF", "Color1_color": "#000000", "Color2_color": "#FFFFFF", "Color3_color": "#000000", "Integer9": "0", "Integer12": "on", "Integer13": "on" } },
+            "1783669883": { "LogoLink": "https://cooltext.com/Logo-Design-Sugar", "PreviewImage": "https://ct.mob0.com/Previews/1783669883.png", "defaults": { "FontSize": "120", "FileFormat": "6", "BackgroundColor_color": "#FFFFFF" } },
+            "2651216203": { "LogoLink": "https://cooltext.com/Logo-Design-Hot-Pink", "PreviewImage": "https://ct.mob0.com/Previews/2651216203.png", "defaults": { "FontSize": "70", "FileFormat": "6", "BackgroundColor_color": "#FFFFFF", "Integer1": "5", "Integer5": "3", "Integer6": "30", "Integer7": "4", "Integer8": "3", "Integer9": "0", "Integer12": "on", "Integer13": "on", "Integer14_color": "#000000" } },
+            "7": { "LogoLink": "https://cooltext.com/Logo-Design-Chrome-One", "PreviewImage": "https://ct.mob0.com/Previews/7.png", "defaults": { "FontSize": "70", "FileFormat": "6", "BackgroundColor_color": "#FFFFFF", "Color1_color": "#000000", "Integer5": "2", "Integer6": "35", "Integer7": "2", "Integer8": "2", "Integer9": "0", "Integer12": "on", "Integer13": "on", "Integer14_color": "#000000" } },
+            "44": { "LogoLink": "https://cooltext.com/Logo-Design-Glitter", "PreviewImage": "https://ct.mob0.com/Previews/44.gif", "defaults": { "FontSize": "50", "BackgroundColor_color": "#FFB6E7", "Color1_color": "#FF00AB", "Color2_color": "#FFFFFF", "Integer1": "100", "Integer9": "0", "Integer12": "on", "Integer13": "on" } },
+            "622063540": { "LogoLink": "https://cooltext.com/Logo-Design-Chick-Flick", "PreviewImage": "https://ct.mob0.com/Previews/622063540.png", "defaults": { "FontSize": "70", "FileFormat": "6", "BackgroundColor_color": "#FFFFFF", "Color1_color": "#FFDAFF", "Color2_color": "#FC8EFF", "Color3_color": "#000000", "Integer1": "2", "Integer5": "0", "Integer6": "75", "Integer7": "0", "Integer8": "0", "Integer9": "0", "Integer12": "on", "Integer13": "on", "Integer14_color": "#000000" } },
+            "832337804": { "LogoLink": "https://cooltext.com/Logo-Design-Club", "PreviewImage": "https://ct.mob0.com/Previews/832337804.png", "defaults": { "FontSize": "70", "FileFormat": "6", "BackgroundColor_color": "#FFFFFF", "Color1_color": "#AC82FA", "Color2_color": "#FF0066", "Color3_color": "#000000", "Boolean2": "on", "Integer1": "5", "Integer5": "2", "Integer6": "75", "Integer7": "1", "Integer8": "1", "Integer9": "0", "Integer12": "on", "Integer13": "on", "Integer14_color": "#000000" } },
+            "829964308": { "LogoLink": "https://cooltext.com/Logo-Design-Princess", "PreviewImage": "https://ct.mob0.com/Previews/829964308.png", "defaults": { "FontSize": "70", "FileFormat": "6", "BackgroundColor_color": "#FFFFFF", "Color1_color": "#99004A", "Integer5": "4", "Integer6": "100", "Integer7": "0", "Integer8": "0", "Integer9": "0", "Integer12": "on", "Integer13": "on", "Integer14_color": "#FF0073" } },
+            "757794054": { "LogoLink": "https://cooltext.com/Logo-Design-Gold-Bar", "PreviewImage": "https://ct.mob0.com/Previews/757794054.png", "defaults": { "FontSize": "70", "FileFormat": "6", "BackgroundColor_color": "#FFFFFF", "Color1_color": "#DB9E25", "Color2_color": "#DB9E25", "Integer1": "18", "Integer2": "-30", "Integer3": "50", "Integer5": "2", "Integer6": "40", "Integer7": "2", "Integer8": "2", "Integer9": "0", "Integer12": "on", "Integer13": "on", "Integer14_color": "#000000" } },
+            "819515844": { "LogoLink": "https://cooltext.com/Logo-Design-Blinkie", "PreviewImage": "https://ct.mob0.com/Previews/819515844.gif", "defaults": { "FontSize": "50", "BackgroundColor_color": "#000000", "Color1_color": "#A34386", "Color2_color": "#FFFFFF", "Integer1": "25", "Integer9": "0", "Integer12": "on", "Integer13": "on" } },
+            "758277984": { "LogoLink": "https://cooltext.com/Logo-Design-Saint-Patrick", "PreviewImage": "https://ct.mob0.com/Previews/758277984.png", "defaults": { "FontSize": "70", "FileFormat": "6", "BackgroundColor_color": "#FFFFFF", "Color1_color": "#FFFFFF", "Color2_color": "#6495ED", "Color3_color": "#000000", "Boolean1": "on", "Integer1": "1", "Integer5": "0", "Integer6": "75", "Integer7": "0", "Integer8": "0", "Integer9": "0", "Integer12": "on", "Integer13": "on", "Integer14_color": "#000000" } },
+            "15": { "LogoLink": "https://cooltext.com/Logo-Design-Glowing-Steel", "PreviewImage": "https://ct.mob0.com/Previews/15.png", "defaults": { "FontSize": "70", "FileFormat": "6", "BackgroundColor_color": "#FFFFFF", "Color1_color": "#2376E1", "Integer1": "5", "Integer5": "0", "Integer6": "75", "Integer7": "0", "Integer8": "0", "Integer9": "0", "Integer12": "on", "Integer13": "on", "Integer14_color": "#000000" } },
+            "732414977": { "LogoLink": "https://cooltext.com/Logo-Design-Vampire", "PreviewImage": "https://ct.mob0.com/Previews/732414977.png", "defaults": { "FontSize": "70", "FileFormat": "6", "BackgroundColor_color": "#FFFFFF", "Color1_color": "#FC14F4", "Color2_color": "#60D4CE", "Boolean1": "on", "Integer1": "135", "Integer2": "45", "Integer3": "3", "Integer5": "2", "Integer6": "50", "Integer7": "3", "Integer8": "3", "Integer9": "0", "Integer12": "on", "Integer13": "on", "Integer14_color": "#000000" } },
+            "4112952183": { "LogoLink": "https://cooltext.com/Logo-Design-Plain", "PreviewImage": "https://ct.mob0.com/Previews/4112952183.png", "defaults": { "FontSize": "120", "FileFormat": "6", "BackgroundColor_color": "#FFFFFF", "Color1_color": "#666666", "Color2_color": "#000000", "Color3_color": "#000000", "Integer1": "0", "Integer5": "0", "Integer6": "75", "Integer7": "3", "Integer8": "3", "Integer9": "0", "Integer12": "on", "Integer13": "on", "Integer14_color": "#000000" } },
+            "4516496663": { "LogoLink": "https://cooltext.com/Logo-Design-Black-Gold", "PreviewImage": "https://ct.mob0.com/Previews/4516496663.png", "defaults": { "FontSize": "120", "FileFormat": "6", "BackgroundColor_color": "#FFFFFF" } },
+            "9": { "LogoLink": "https://cooltext.com/Logo-Design-Comic", "PreviewImage": "https://ct.mob0.com/Previews/9.png", "defaults": { "FontSize": "70", "FileFormat": "6", "BackgroundColor_color": "#000000", "Integer1": "5", "Integer5": "2", "Integer6": "75", "Integer7": "0", "Integer8": "0", "Integer9": "0", "Integer12": "on", "Integer13": "on", "Integer14_color": "#000000" } },
+            "2654162149": { "LogoLink": "https://cooltext.com/Logo-Design-Caster", "PreviewImage": "https://ct.mob0.com/Previews/2654162149.png", "defaults": { "FontSize": "70", "FileFormat": "6", "BackgroundColor_color": "#FFFFFF", "Color1_color": "#AC82FA", "Color2_color": "#FF0066", "Color3_color": "#000000", "Boolean1": "on", "Boolean2": "on", "Integer1": "3", "Integer5": "2", "Integer6": "75", "Integer7": "1", "Integer8": "1", "Integer9": "0", "Integer12": "on", "Integer13": "on", "Integer14_color": "#000000" } },
+            "732453157": { "LogoLink": "https://cooltext.com/Logo-Design-Studio-54", "PreviewImage": "https://ct.mob0.com/Previews/732453157.png", "defaults": { "FontSize": "70", "FileFormat": "6", "BackgroundColor_color": "#FFFFFF", "Color1_color": "#F1F745", "Color2_color": "#C663ED", "Color3_color": "#000000", "Boolean1": "on", "Integer1": "2", "Integer5": "2", "Integer6": "30", "Integer7": "2", "Integer8": "2", "Integer9": "0", "Integer12": "on", "Integer13": "on", "Integer14_color": "#000000" } },
+            "16": { "LogoLink": "https://cooltext.com/Logo-Design-Gradient-Bevel", "PreviewImage": "https://ct.mob0.com/Previews/16.png", "defaults": { "FontSize": "70", "FileFormat": "6", "BackgroundColor_color": "#FFFFFF", "Color1_color": "#7F7F7F", "Color2_color": "#FFFFFF", "Integer5": "1", "Integer6": "50", "Integer7": "2", "Integer8": "3", "Integer9": "0", "Integer12": "on", "Integer13": "on", "Integer14_color": "#000000" } },
+            "22": { "LogoLink": "https://cooltext.com/Logo-Design-Starburst", "PreviewImage": "https://ct.mob0.com/Previews/22.png", "defaults": { "FontSize": "70", "FileFormat": "6", "BackgroundColor_color": "#FFFFFF", "Color1_color": "#3CC421", "Integer5": "0", "Integer6": "75", "Integer7": "0", "Integer8": "0", "Integer9": "0", "Integer12": "on", "Integer13": "on", "Integer14_color": "#000000" } },
+            "4623632030": { "LogoLink": "https://cooltext.com/Logo-Design-TROY", "PreviewImage": "https://ct.mob0.com/Previews/4623632030.png", "defaults": { "FontSize": "120", "FileFormat": "6", "BackgroundColor_color": "#FFFFFF" } },
+            "4110551533": { "LogoLink": "https://cooltext.com/Logo-Design-Scavenge", "PreviewImage": "https://ct.mob0.com/Previews/4110551533.png", "defaults": { "FontSize": "120", "FileFormat": "6", "BackgroundColor_color": "#FFFFFF" } },
+            "852774362": { "LogoLink": "https://cooltext.com/Logo-Design-Lava", "PreviewImage": "https://ct.mob0.com/Previews/852774362.png", "defaults": { "FontSize": "70", "FileFormat": "6", "BackgroundColor_color": "#000000", "Boolean1": "on", "Boolean3": "on", "Integer1": "3", "Integer5": "2", "Integer6": "60", "Integer7": "2", "Integer8": "2", "Integer9": "6", "Integer12": "on", "Integer13": "on", "Integer14_color": "#000000" } },
+            "4623046021": { "LogoLink": "https://cooltext.com/Logo-Design-Achilles", "PreviewImage": "https://ct.mob0.com/Previews/4623046021.png", "defaults": { "FontSize": "120", "FileFormat": "6", "BackgroundColor_color": "#030000" } },
+            "830446526": { "LogoLink": "https://cooltext.com/Logo-Design-Sushi", "PreviewImage": "https://ct.mob0.com/Previews/830446526.png", "defaults": { "FontSize": "70", "FileFormat": "6", "BackgroundColor_color": "#FFFFFF", "Color1_color": "#CC0808", "Color2_color": "#E3D110", "Integer1": "135", "Integer2": "45", "Integer3": "2", "Integer5": "2", "Integer6": "40", "Integer7": "2", "Integer8": "2", "Integer9": "0", "Integer12": "on", "Integer13": "on", "Integer14_color": "#000000" } },
+            "749791093": { "LogoLink": "https://cooltext.com/Logo-Design-Rage", "PreviewImage": "https://ct.mob0.com/Previews/749791093.png", "defaults": { "FontSize": "70", "FileFormat": "6", "BackgroundColor_color": "#FFFFFF", "Color1_color": "#A30606", "Integer5": "1", "Integer6": "85", "Integer7": "3", "Integer8": "3", "Integer9": "0", "Integer12": "on", "Integer13": "on", "Integer14_color": "#000000" } },
+            "4623636111": { "LogoLink": "https://cooltext.com/Logo-Design-Conan", "PreviewImage": "https://ct.mob0.com/Previews/4623636111.png", "defaults": { "FontSize": "120", "FileFormat": "6", "BackgroundColor_color": "#FFFFFF" } },
+            "1779834160": { "LogoLink": "https://cooltext.com/Logo-Design-Ice-Cube", "PreviewImage": "https://ct.mob0.com/Previews/1779834160.png", "defaults": { "FontSize": "120", "FileFormat": "6", "BackgroundColor_color": "#FFFFFF" } },
+            "759902224": { "LogoLink": "https://cooltext.com/Logo-Design-Spring", "PreviewImage": "https://ct.mob0.com/Previews/759902224.png", "defaults": { "FontSize": "70", "FileFormat": "6", "BackgroundColor_color": "#FFFFFF", "Color1_color": "#66FFCC", "Color2_color": "#B94FFF", "Integer1": "6", "Integer2": "1", "Integer5": "0", "Integer6": "75", "Integer7": "3", "Integer8": "3", "Integer9": "0", "Integer12": "on", "Integer13": "on", "Integer14_color": "#000000" } },
+            "31": { "LogoLink": "https://cooltext.com/Logo-Design-Embossed", "PreviewImage": "https://ct.mob0.com/Previews/31.png", "defaults": { "FontSize": "70", "FileFormat": "5", "Color1_color": "#A4D9A4", "Color2_color": "#EAA888", "Boolean1": "on", "Boolean2": "on", "Boolean3": "on", "Integer9": "0", "Integer12": "on", "Integer13": "on" } },
+            "622058564": { "LogoLink": "https://cooltext.com/Logo-Design-Cupid", "PreviewImage": "https://ct.mob0.com/Previews/622058564.png", "defaults": { "FontSize": "70", "FileFormat": "6", "BackgroundColor_color": "#FFFFFF", "Color1_color": "#C600A5", "Integer5": "4", "Integer6": "70", "Integer7": "0", "Integer8": "0", "Integer9": "0", "Integer12": "on", "Integer13": "on", "Integer14_color": "#000000" } },
+            "1357657967": { "LogoLink": "https://cooltext.com/Logo-Design-Royal", "PreviewImage": "https://ct.mob0.com/Previews/1357657967.png", "defaults": { "FontSize": "100", "FileFormat": "6", "BackgroundColor_color": "#FFFFFF" } },
+            "2172004512": { "LogoLink": "https://cooltext.com/Logo-Design-Sword", "PreviewImage": "https://ct.mob0.com/Previews/2172004512.png", "defaults": { "FontSize": "120", "FileFormat": "6", "BackgroundColor_color": "#FFFFFF" } },
+            "758282876": { "LogoLink": "https://cooltext.com/Logo-Design-Tough", "PreviewImage": "https://ct.mob0.com/Previews/758282876.png", "defaults": { "FontSize": "70", "FileFormat": "6", "BackgroundColor_color": "#FFFFFF", "Color1_color": "#0A213D", "Integer1": "5", "Integer5": "0", "Integer6": "75", "Integer7": "0", "Integer8": "0", "Integer9": "0", "Integer12": "on", "Integer13": "on", "Integer14_color": "#000000" } },
+            "1279361064": { "LogoLink": "https://cooltext.com/Logo-Design-Liquid-Gold", "PreviewImage": "https://ct.mob0.com/Previews/1279361064.png", "defaults": { "FontSize": "70", "FileFormat": "6", "BackgroundColor_color": "#FFFFFF" } },
+            "39": { "LogoLink": "https://cooltext.com/Logo-Design-Particle", "PreviewImage": "https://ct.mob0.com/Previews/39.png", "defaults": { "FontSize": "70", "FileFormat": "6", "BackgroundColor_color": "#FFFFFF", "Color1_color": "#320000", "Integer5": "3", "Integer6": "95", "Integer7": "0", "Integer8": "0", "Integer9": "0", "Integer12": "on", "Integer13": "on", "Integer14_color": "#000000" } },
+            "1169711118": { "LogoLink": "https://cooltext.com/Logo-Design-Flaming", "PreviewImage": "https://ct.mob0.com/Previews/1169711118.gif", "defaults": { "FontSize": "90", "BackgroundColor_color": "#FFFFFF", "Color1_color": "#4D0000", "Integer1": "90", "Integer9": "0", "Integer12": "on", "Integer13": "on" } },
+            "4112285956": { "LogoLink": "https://cooltext.com/Logo-Design-DEEJAY", "PreviewImage": "https://ct.mob0.com/Previews/4112285956.png", "defaults": { "FontSize": "120", "FileFormat": "6", "BackgroundColor_color": "#FFFFFF", "Color1_color": "#000000", "Color2_color": "#000000", "Color3_color": "#23FA14", "Integer1": "3", "Integer5": "2", "Integer6": "75", "Integer7": "1", "Integer8": "1", "Integer9": "0", "Integer12": "on", "Integer13": "on", "Integer14_color": "#000000" } },
+            "732447945": { "LogoLink": "https://cooltext.com/Logo-Design-Super-Scripted", "PreviewImage": "https://ct.mob0.com/Previews/732447945.png", "defaults": { "FontSize": "70", "FileFormat": "6", "BackgroundColor_color": "#FFFFFF", "Color1_color": "#000000", "Integer5": "4", "Integer6": "70", "Integer7": "0", "Integer8": "0", "Integer9": "0", "Integer12": "on", "Integer13": "on", "Integer14_color": "#000000" } },
+            "36": { "LogoLink": "https://cooltext.com/Logo-Design-Frosty", "PreviewImage": "https://ct.mob0.com/Previews/36.png", "defaults": { "FontSize": "70", "FileFormat": "6", "BackgroundColor_color": "#FFFFFF", "Color1_color": "#000000", "Color2_color": "#000000", "Color3_color": "#BAF1FF", "Integer5": "0", "Integer6": "75", "Integer7": "10", "Integer8": "10", "Integer9": "0", "Integer12": "on", "Integer13": "on", "Integer14_color": "#000000" } },
+            "4618043283": { "LogoLink": "https://cooltext.com/Logo-Design-PURPLE-GIRL", "PreviewImage": "https://ct.mob0.com/Previews/4618043283.png", "defaults": { "FontSize": "120", "FileFormat": "6", "BackgroundColor_color": "#FFFFFF" } },
+            "29": { "LogoLink": "https://cooltext.com/Logo-Design-3D-Outline-Gradient", "PreviewImage": "https://ct.mob0.com/Previews/29.png", "defaults": { "FontSize": "70", "FileFormat": "6", "BackgroundColor_color": "#FFFFFF", "Color1_color": "#FFFFFF", "Color2_color": "#FF0000", "Integer1": "5", "Integer2": "5", "Integer5": "2", "Integer6": "75", "Integer7": "3", "Integer8": "3", "Integer9": "0", "Integer12": "on", "Integer13": "on", "Integer14_color": "#000000" } },
+            "8": { "LogoLink": "https://cooltext.com/Logo-Design-Chrome-Two", "PreviewImage": "https://ct.mob0.com/Previews/8.png", "defaults": { "FontSize": "70", "FileFormat": "6", "BackgroundColor_color": "#FFFFFF", "Color1_color": "#C86400", "Color2_color": "#000000", "Integer1": "15", "Integer2": "-80", "Integer3": "70", "Integer5": "2", "Integer6": "80", "Integer7": "3", "Integer8": "2", "Integer9": "0", "Integer12": "on", "Integer13": "on", "Integer14_color": "#000000" } },
+            "4110593891": { "LogoLink": "https://cooltext.com/Logo-Design-Graffiti-Creator", "PreviewImage": "https://ct.mob0.com/Previews/4110593891.png", "defaults": { "FontSize": "70", "FileFormat": "6", "BackgroundColor_color": "#FFFFFF", "Color1_color": "#FEAF63", "Color2_color": "#EC0D96", "Color3_color": "#FFF70D", "Boolean1": "on", "Integer1": "1", "Integer5": "3", "Integer6": "75", "Integer7": "0", "Integer8": "0", "Integer9": "0", "Integer12": "on", "Integer13": "on", "Integer14_color": "#000000" } },
+            "732450628": { "LogoLink": "https://cooltext.com/Logo-Design-Bad-Acid", "PreviewImage": "https://ct.mob0.com/Previews/732450628.png", "defaults": { "FontSize": "70", "FileFormat": "6", "BackgroundColor_color": "#FFFFFF", "Color1_color": "#E81EE8", "Color2_color": "#4609ED", "Color3_color": "#050504", "Integer5": "0", "Integer6": "75", "Integer7": "3", "Integer8": "3", "Integer9": "0", "Integer12": "on", "Integer13": "on", "Integer14_color": "#000000" } },
+            "4112421173": { "LogoLink": "https://cooltext.com/Logo-Design-Greek-Gold", "PreviewImage": "https://ct.mob0.com/Previews/4112421173.png", "defaults": { "FontSize": "120", "FileFormat": "6", "BackgroundColor_color": "#FFFFFF" } },
+            "43": { "LogoLink": "https://cooltext.com/Logo-Design-Molten-Core", "PreviewImage": "https://ct.mob0.com/Previews/43.gif", "defaults": { "FontSize": "70", "BackgroundColor_color": "#FFFFFF", "Integer9": "0", "Integer12": "on", "Integer13": "on" } },
+            "1408818473": { "LogoLink": "https://cooltext.com/Logo-Design-Halloween", "PreviewImage": "https://ct.mob0.com/Previews/1408818473.png", "defaults": { "FontSize": "120", "FileFormat": "6", "BackgroundColor_color": "#FFFFFF" } },
+            "28": { "LogoLink": "https://cooltext.com/Logo-Design-3D-Outline-Textured", "PreviewImage": "https://ct.mob0.com/Previews/28.png", "defaults": { "FontSize": "70", "FileFormat": "6", "BackgroundColor_color": "#FFFFFF", "Integer1": "5", "Integer2": "5", "Integer5": "2", "Integer6": "75", "Integer7": "3", "Integer8": "3", "Integer9": "0", "Integer12": "on", "Integer13": "on", "Integer14_color": "#000000" } },
+            "33": { "LogoLink": "https://cooltext.com/Logo-Design-Chromium", "PreviewImage": "https://ct.mob0.com/Previews/33.png", "defaults": { "FontSize": "70", "FileFormat": "6", "BackgroundColor_color": "#FFFFFF", "Color1_color": "#C8C8C8", "Color2_color": "#FF0000", "Boolean1": "on", "Boolean2": "on", "Integer5": "0", "Integer6": "75", "Integer7": "0", "Integer8": "0", "Integer9": "0", "Integer12": "on", "Integer13": "on", "Integer14_color": "#000000" } },
+            "819721038": { "LogoLink": "https://cooltext.com/Logo-Design-Love", "PreviewImage": "https://ct.mob0.com/Previews/819721038.gif", "defaults": { "FontSize": "70", "BackgroundColor_color": "#FFFFFF", "Color1_color": "#FF1491", "Color2_color": "#FFFFFF", "Color3_color": "#FF1491", "Integer9": "0", "Integer12": "on", "Integer13": "on" } },
+            "783758829": { "LogoLink": "https://cooltext.com/Logo-Design-House-Arryn", "PreviewImage": "https://ct.mob0.com/Previews/783758829.png", "defaults": { "FontSize": "70", "FileFormat": "6", "BackgroundColor_color": "#FFFFFF", "Color1_color": "#0ADEFF", "Color2_color": "#107878", "Boolean1": "on", "Integer1": "135", "Integer2": "45", "Integer3": "2", "Integer5": "2", "Integer6": "40", "Integer7": "2", "Integer8": "2", "Integer9": "0", "Integer12": "on", "Integer13": "on", "Integer14_color": "#000000" } },
+            "1516206867": { "LogoLink": "https://cooltext.com/Logo-Design-Grinch", "PreviewImage": "https://ct.mob0.com/Previews/1516206867.png", "defaults": { "FontSize": "120", "FileFormat": "6", "BackgroundColor_color": "#FFFFFF" } },
+            "615569527": { "LogoLink": "https://cooltext.com/Logo-Design-Snowman", "PreviewImage": "https://ct.mob0.com/Previews/615569527.png", "defaults": { "FontSize": "70", "FileFormat": "6", "BackgroundColor_color": "#FFFFFF", "Color1_color": "#FFFFFF", "Color2_color": "#FFFFFF", "Color3_color": "#DF5900", "Integer5": "0", "Integer6": "75", "Integer7": "0", "Integer8": "0", "Integer9": "0", "Integer12": "on", "Integer13": "on", "Integer14_color": "#000000" } },
+            "1408867449": { "LogoLink": "https://cooltext.com/Logo-Design-Dragon", "PreviewImage": "https://ct.mob0.com/Previews/1408867449.png", "defaults": { "FontSize": "120", "FileFormat": "6", "BackgroundColor_color": "#FFFFFF" } },
+            "830469381": { "LogoLink": "https://cooltext.com/Logo-Design-Water", "PreviewImage": "https://ct.mob0.com/Previews/830469381.png", "defaults": { "FontSize": "70", "FileFormat": "6", "BackgroundColor_color": "#FFFFFF", "Color1_color": "#2A4FBF", "Color2_color": "#22D6D6", "Integer1": "18", "Integer2": "-30", "Integer3": "50", "Integer5": "2", "Integer6": "40", "Integer7": "2", "Integer8": "2", "Integer9": "0", "Integer12": "on", "Integer13": "on", "Integer14_color": "#000000" } },
+            "24": { "LogoLink": "https://cooltext.com/Logo-Design-Felt", "PreviewImage": "https://ct.mob0.com/Previews/24.png", "defaults": { "FontSize": "70", "FileFormat": "6", "BackgroundColor_color": "#FFFFFF", "Color1_color": "#6A5ACD", "Integer5": "2", "Integer6": "90", "Integer7": "3", "Integer8": "5", "Integer9": "0", "Integer12": "on", "Integer13": "on", "Integer14_color": "#000000" } },
+            "615608693": { "LogoLink": "https://cooltext.com/Logo-Design-Muddy", "PreviewImage": "https://ct.mob0.com/Previews/615608693.png", "defaults": { "FontSize": "140", "FileFormat": "6", "BackgroundColor_color": "#FFFFFF", "Color1_color": "#FF9C39", "Integer5": "0", "Integer6": "75", "Integer7": "0", "Integer8": "0", "Integer9": "0", "Integer12": "on", "Integer13": "on", "Integer14_color": "#000000" } },
+            "611409107": { "LogoLink": "https://cooltext.com/Logo-Design-Lasers", "PreviewImage": "https://ct.mob0.com/Previews/611409107.png", "defaults": { "FontSize": "70", "FileFormat": "6", "BackgroundColor_color": "#FFFFFF", "Color1_color": "#D70000", "Integer5": "3", "Integer6": "95", "Integer7": "0", "Integer8": "0", "Integer9": "0", "Integer12": "on", "Integer13": "on", "Integer14_color": "#000000" } },
+            "4618054285": { "LogoLink": "https://cooltext.com/Logo-Design-Neon-Glow", "PreviewImage": "https://ct.mob0.com/Previews/4618054285.png", "defaults": { "FontSize": "120", "FileFormat": "6", "BackgroundColor_color": "#FFFFFF" } },
+            "2655372531": { "LogoLink": "https://cooltext.com/Logo-Design-Robot", "PreviewImage": "https://ct.mob0.com/Previews/2655372531.png", "defaults": { "FontSize": "120", "FileFormat": "6", "BackgroundColor_color": "#FFFFFF" } },
+            "833904313": { "LogoLink": "https://cooltext.com/Logo-Design-Hot", "PreviewImage": "https://ct.mob0.com/Previews/833904313.png", "defaults": { "FontSize": "100", "FileFormat": "6", "BackgroundColor_color": "#FFFFFF", "Color1_color": "#8F2100", "Integer5": "2", "Integer6": "30", "Integer7": "0", "Integer8": "0", "Integer9": "0", "Integer12": "on", "Integer13": "on", "Integer14_color": "#000000" } },
+            "830474754": { "LogoLink": "https://cooltext.com/Logo-Design-Dark", "PreviewImage": "https://ct.mob0.com/Previews/830474754.png", "defaults": { "FontSize": "70", "FileFormat": "6", "BackgroundColor_color": "#FFFFFF", "Boolean1": "on", "Boolean2": "on", "Boolean3": "on", "Integer1": "5", "Integer5": "4", "Integer6": "30", "Integer7": "2", "Integer8": "2", "Integer9": "0", "Integer12": "on", "Integer13": "on", "Integer14_color": "#FFF2FF" } },
+            "2792545512": { "LogoLink": "https://cooltext.com/Logo-Design-Stranger", "PreviewImage": "https://ct.mob0.com/Previews/2792545512.png", "defaults": { "FontSize": "120", "FileFormat": "6", "BackgroundColor_color": "#FFFFFF", "Color1_color": "#F5FAFF", "Color2_color": "#16877A", "Color3_color": "#000000", "Integer1": "5", "Integer5": "2", "Integer6": "75", "Integer7": "1", "Integer8": "1", "Integer9": "0", "Integer12": "on", "Integer13": "on", "Integer14_color": "#000000" } },
+            "599808801": { "LogoLink": "https://cooltext.com/Logo-Design-Galactica", "PreviewImage": "https://ct.mob0.com/Previews/599808801.png", "defaults": { "FontSize": "75", "Color1_color": "#01BF21", "Integer9": "0", "Integer12": "on", "Integer13": "on" } },
+            "32": { "LogoLink": "https://cooltext.com/Logo-Design-Pixel-Badge", "PreviewImage": "https://ct.mob0.com/Previews/32.gif", "defaults": { "Text": "PIXEL", "BackgroundColor_color": "#000000", "Color1_color": "#FFFFFF", "Color2_color": "#FF6600", "Color3_color": "#FFFFFF", "Boolean1": "on", "Boolean2": "on", "Integer4": "80" } },
+            "4112424040": { "LogoLink": "https://cooltext.com/Logo-Design-GOLD-BEVEL", "PreviewImage": "https://ct.mob0.com/Previews/4112424040.png", "defaults": { "FontSize": "120", "FileFormat": "6", "BackgroundColor_color": "#FFFFFF" } },
+            "14": { "LogoLink": "https://cooltext.com/Logo-Design-Glowing-Hot", "PreviewImage": "https://ct.mob0.com/Previews/14.png", "defaults": { "FontSize": "70", "FileFormat": "6", "BackgroundColor_color": "#FFFFFF", "Integer5": "0", "Integer6": "75", "Integer7": "0", "Integer8": "0", "Integer9": "0", "Integer12": "on", "Integer13": "on", "Integer14_color": "#000000" } },
+            "2176267473": { "LogoLink": "https://cooltext.com/Logo-Design-Neron", "PreviewImage": "https://ct.mob0.com/Previews/2176267473.png", "defaults": { "FontSize": "120", "FileFormat": "6", "BackgroundColor_color": "#000000" } },
+            "1783676518": { "LogoLink": "https://cooltext.com/Logo-Design-Candy-Stripe", "PreviewImage": "https://ct.mob0.com/Previews/1783676518.png", "defaults": { "FontSize": "120", "FileFormat": "6", "BackgroundColor_color": "#FFFFFF" } },
+            "783756759": { "LogoLink": "https://cooltext.com/Logo-Design-Iceberg", "PreviewImage": "https://ct.mob0.com/Previews/783756759.png", "defaults": { "FontSize": "70", "FileFormat": "6", "BackgroundColor_color": "#FFFFFF", "Color1_color": "#B7E3FF", "Boolean1": "on", "Integer1": "100", "Integer5": "2", "Integer6": "50", "Integer7": "0", "Integer8": "0", "Integer9": "0", "Integer12": "on", "Integer13": "on", "Integer14_color": "#000000" } },
+            "42": { "LogoLink": "https://cooltext.com/Logo-Design-Plastic", "PreviewImage": "https://ct.mob0.com/Previews/42.png", "defaults": { "FontSize": "70", "FileFormat": "6", "BackgroundColor_color": "#FFFFFF", "Color1_color": "#FF0000", "Integer5": "4", "Integer6": "70", "Integer7": "0", "Integer8": "0", "Integer9": "0", "Integer12": "on", "Integer13": "on", "Integer14_color": "#000000" } },
+            "4618522408": { "LogoLink": "https://cooltext.com/Logo-Design-Neon-Green", "PreviewImage": "https://ct.mob0.com/Previews/4618522408.png", "defaults": { "FontSize": "120", "FileFormat": "6", "BackgroundColor_color": "#030000" } },
+            "4113153856": { "LogoLink": "https://cooltext.com/Logo-Design-Apollo-11", "PreviewImage": "https://ct.mob0.com/Previews/4113153856.png", "defaults": { "FontSize": "120", "FileFormat": "6", "BackgroundColor_color": "#FFFFFF" } },
+            "612444173": { "LogoLink": "https://cooltext.com/Logo-Design-Tie-Dyed", "PreviewImage": "https://ct.mob0.com/Previews/612444173.png", "defaults": { "FontSize": "70", "FileFormat": "6", "BackgroundColor_color": "#FFFFFF", "Color1_color": "#FFFFFF", "Color2_color": "#FF0000", "Boolean1": "on", "Boolean2": "on", "Integer1": "5", "Integer2": "5", "Integer5": "2", "Integer6": "75", "Integer7": "3", "Integer8": "3", "Integer9": "0", "Integer12": "on", "Integer13": "on", "Integer14_color": "#000000" } },
+            "34": { "LogoLink": "https://cooltext.com/Logo-Design-Iced", "PreviewImage": "https://ct.mob0.com/Previews/34.png", "defaults": { "FontSize": "70", "FileFormat": "6", "BackgroundColor_color": "#FFFFFF", "Color1_color": "#A4B3F0", "Color2_color": "#000000", "Integer1": "2", "Integer2": "6", "Integer3": "3", "Integer5": "0", "Integer6": "75", "Integer7": "0", "Integer8": "0", "Integer9": "0", "Integer12": "on", "Integer13": "on", "Integer14_color": "#000000" } },
+            "783763343": { "LogoLink": "https://cooltext.com/Logo-Design-Cheetah", "PreviewImage": "https://ct.mob0.com/Previews/783763343.png", "defaults": { "FontSize": "70", "FileFormat": "6", "BackgroundColor_color": "#FFFFFF", "Integer1": "5", "Integer2": "5", "Integer5": "2", "Integer6": "50", "Integer7": "2", "Integer8": "2", "Integer9": "0", "Integer12": "on", "Integer13": "on", "Integer14_color": "#000000" } }
+        };
+        const icons = {
+            copy: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-gray-400 group-hover/copy:text-blue-600 flex-shrink-0 transition-colors"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>',
+            check: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-green-600 flex-shrink-0"><polyline points="20 6 9 17 4 12"/></svg>',
+            external: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>'
+        };
+
+        function showToast() {
+            const toast = document.getElementById('toast');
+            toast.classList.remove('hidden', 'toast-exit');
+            toast.classList.add('toast-enter');
+            
+            setTimeout(() => {
+                toast.classList.remove('toast-enter');
+                toast.classList.add('toast-exit');
+                setTimeout(() => toast.classList.add('hidden'), 300);
+            }, 3000);
+        }
+
+        async function copyToClipboard(buttonElement, text) {
+            try {
+                await navigator.clipboard.writeText(text);
+                showToast();
+                const iconContainer = buttonElement.querySelector('.icon-container');
+                if(iconContainer) {
+                    const originalIcon = iconContainer.innerHTML;
+                    iconContainer.innerHTML = icons.check;
+                    setTimeout(() => {
+                        iconContainer.innerHTML = originalIcon;
+                    }, 2000);
+                }
+            } catch (err) {
+                console.error('Failed to copy:', err);
+                alert("Clipboard access denied or not supported.");
+            }
+        }
+
+        const grid = document.getElementById('logo-grid');
+        const entries = Object.entries(logoData);
+
+        entries.forEach(([id, data], index) => {
+            const hasDefaults = data.defaults && Object.keys(data.defaults).length > 0;
+            const linkText = data.LogoLink.replace('https://', '');
+            const card = document.createElement('div');
+            card.className = "group bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 hover:border-blue-200 hover:-translate-y-1";
+            card.innerHTML = `
+                <div class="relative">
+                    <div class="absolute top-3 left-3 z-10">
+                        <span class="px-2.5 py-1 bg-gray-900/80 backdrop-blur-sm text-white text-xs font-semibold rounded-lg">
+                            #${index + 1}
+                        </span>
+                    </div>
+                    <div class="h-48 bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center p-6 border-b border-gray-100">
+                        <img
+                            src="${data.PreviewImage}"
+                            alt="Logo ${id}"
+                            loading="lazy"
+                            class="max-w-full max-h-full object-contain transition-transform duration-300 group-hover:scale-105"
+                        />
+                    </div>
+                </div>
+
+                <div class="p-5 space-y-4">
+                    <div class="space-y-2">
+                        <label class="text-xs font-semibold text-gray-500 uppercase tracking-wider">
+                            Logo ID
+                        </label>
+                        <button
+                            onclick="copyToClipboard(this, '${id}')"
+                            class="w-full flex items-center justify-between gap-2 px-3 py-2.5 bg-gray-50 hover:bg-blue-50 rounded-lg border border-gray-200 hover:border-blue-300 transition-all duration-200 group/copy"
+                        >
+                            <span class="font-mono text-sm text-gray-700 truncate">${id}</span>
+                            <span class="icon-container">${icons.copy}</span>
+                        </button>
+                    </div>
+
+                    <div class="space-y-2">
+                        <label class="text-xs font-semibold text-gray-500 uppercase tracking-wider">
+                            Design Link
+                        </label>
+                        <div class="flex gap-2">
+                            <button
+                                onclick="copyToClipboard(this, '${data.LogoLink}')"
+                                class="flex-1 flex items-center justify-between gap-2 px-3 py-2.5 bg-gray-50 hover:bg-blue-50 rounded-lg border border-gray-200 hover:border-blue-300 transition-all duration-200 group/copy"
+                            >
+                                <span class="font-mono text-sm text-gray-700 truncate">${linkText}</span>
+                                <span class="icon-container">${icons.copy}</span>
+                            </button>
+                            <a
+                                href="${data.LogoLink}"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="px-3 py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors duration-200 flex items-center justify-center"
+                            >
+                                ${icons.external}
+                            </a>
+                        </div>
+                    </div>
+
+                    ${hasDefaults ? `
+                    <details class="group/details">
+                        <summary class="cursor-pointer text-xs font-semibold text-gray-500 uppercase tracking-wider hover:text-gray-700 transition-colors list-none flex items-center justify-between py-2">
+                            Default Configuration
+                            <span class="text-gray-400 group-open/details:rotate-180 transition-transform">▼</span>
+                        </summary>
+                        <div class="mt-2 grid grid-cols-2 gap-1.5 max-h-40 overflow-y-auto">
+                            ${Object.entries(data.defaults).map(([k, v]) => `
+                                <div class="px-2 py-1.5 bg-gray-50 rounded text-xs border border-gray-100">
+                                    <span class="font-semibold text-gray-700 block truncate">${k}</span>
+                                    <span class="text-gray-500 block truncate">${v}</span>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </details>
+                    ` : ''}
+                </div>
+            `;
+            grid.appendChild(card);
+        });
+
+    </script>
+</body>
+</html>
