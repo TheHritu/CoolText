@@ -2,12 +2,25 @@
 
 A small Python helper for generating images using CoolText's PostChange API. This repository wraps CoolText form options in a simple data model, posts the configuration to CoolText, and returns the rendered image URL.
 
-**Key files**
-- `main.py`: example runner that shows a minimal usage example.
-- `modules.py`: core library with `PostChangeConfigOptions` and `CoolText` classes.
-- `constants.py`: constants, request headers, and configuration keys.
-- `logo-id.json`: cached LogoID → metadata mapping used to build requests.
-- `web/index.html`: (optional) preview/static content included in the repo.
+# Example
+
+- Result with logo id - ```4618063429```:
+
+<img src='./results/sample.png' style="width:30%"></img>
+
+- Result with logo id - ```8```:
+
+<img src='./results/sample2.png' style="width:30%"></img>
+
+- Result with logo id - ```2975689126```:
+
+<img src='./results/sample3.png' style="width:30%"></img>
+
+- Result with logo id - ```829964308```:
+
+<img src='./results/sample4.png' style="width:30%"></img>
+
+### <b>...And Many More Are Here...</b>
 
 **Features**
 - Build payloads using a typed `pydantic` model.
