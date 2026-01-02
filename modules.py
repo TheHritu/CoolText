@@ -1,10 +1,18 @@
+import os
 import json
 import logging
 import requests
 from typing import Optional
 from urllib.parse import quote
 from pydantic import BaseModel
-from constants import DefaultValues, Requests, ConfigFile, API, ExceptionMessages
+from constants import (
+    API,
+    Extras,
+    Requests,
+    ConfigFile,
+    DefaultValues,
+    LoggerMessages,
+)
 
 
 class PostChangeConfigOptions(BaseModel):
@@ -34,6 +42,90 @@ class PostChangeConfigOptions(BaseModel):
     Integer14_color: Optional[str] = None
 
 
+class CoolTextResult:
+    def __init__(self, url: str, headers: dict, file_format: str):
+        self._url = url
+        self._headers = headers
+        self._file_format = file_format
+
+    def __str__(self) -> str:
+        return self._url if self._url else DefaultValues.NONE_STR.value
+
+    def __repr__(self) -> str:
+        return Extras.REPR_TEXT.value.format(self._url)
+
+    def __bool__(self) -> bool:
+        return bool(self._url)
+
+    def download(
+        self, filepath: Optional[str] = None, timeout: int = 30, stream: bool = True
+    ) -> Optional[str]:
+        logger = logging.getLogger(__name__)
+
+        if not self._url:
+            logger.error(LoggerMessages.NO_URL_AVAILABLE.value)
+            return None
+
+        try:
+            if filepath is None:
+                filename = os.path.basename(
+                    self._url.split(Extras.TEXT_QUESTION_MARK.value)[0]
+                )
+                if not filename or Extras.TEXT_DOT.value not in filename:
+                    import time
+
+                    timestamp = int(time.time())
+                    filename = (
+                        Extras.FILENAME_IF_NOT_DOT_IN_FILENAME_EARLIER.value.format(
+                            timestamp, self._file_format.lower()
+                        )
+                    )
+                filepath = filename
+            if not filepath.lower().endswith(
+                Extras.TEXT_DOT.value + str(self._file_format.lower())
+            ):
+                filepath = (
+                    str(os.path.splitext(filepath)[0])
+                    + Extras.TEXT_DOT.value
+                    + self._file_format.lower()
+                )
+            logger.info(
+                LoggerMessages.DOWNLOADING_FROM.value.format(self._url, filepath)
+            )
+
+            if stream:
+                response = requests.get(
+                    self._url,
+                    headers=self._headers,
+                    timeout=timeout,
+                    stream=True,
+                    verify=False,
+                )
+                response.raise_for_status()
+                with open(filepath, Extras.OPEN_AS_WRITE_BINARY.value) as f:
+                    for chunk in response.iter_content(chunk_size=8192):
+                        if chunk:
+                            f.write(chunk)
+            else:
+                response = requests.get(
+                    self._url, headers=self._headers, timeout=timeout
+                )
+                response.raise_for_status()
+                with open(filepath, Extras.OPEN_AS_WRITE_BINARY.value) as f:
+                    f.write(response.content)
+            logger.info(LoggerMessages.SUCCESSFULLY_DOWNLOADED.value.format(filepath))
+            return filepath
+        except requests.exceptions.RequestException as exc:
+            logger.exception(LoggerMessages.FAILED_TO_DOWNLOAD.value.format(exc))
+            return None
+        except IOError as exc:
+            logger.exception(LoggerMessages.FAILED_TO_SAVE_FILE.value.format(exc))
+            return None
+        except Exception as exc:
+            logger.exception(LoggerMessages.UNEXPECTED_ERROR.value.format(exc))
+            return None
+
+
 class CoolText:
     def __init__(self, config: PostChangeConfigOptions):
         self.config = config
@@ -56,11 +148,12 @@ class CoolText:
     def get_headers(self) -> dict:
         return Requests.header(Referer=self.get_link())
 
-    def create(self) -> Optional[str]:
+    def create(self) -> CoolTextResult:
         logger = logging.getLogger(__name__)
         url = API.PROTOCOL.value + API.BASE_URL.value + API.CHANGE_ENDPOINT.value
         payload = {**self.get_payload(), **self.get_defaults()}
         headers = self.get_headers()
+
         try:
             with requests.Session() as s:
                 resp_get = s.get(self.get_link(), headers=headers, timeout=10)
@@ -69,18 +162,27 @@ class CoolText:
                 resp_post.raise_for_status()
                 data = resp_post.json()
         except requests.exceptions.RequestException as exc:
-            logger.exception(ExceptionMessages.HTTP_REQUEST_FAILED.value, exc)
-            return None
+            logger.exception(LoggerMessages.HTTP_REQUEST_FAILED.value, exc)
+            return CoolTextResult(
+                DefaultValues.NONE_STR.value, {}, DefaultValues.NONE_STR.value
+            )
         except ValueError:
-            logger.exception(ExceptionMessages.JSON_DECODE_FAILED.value)
-            return None
+            logger.exception(LoggerMessages.JSON_DECODE_FAILED.value)
+            return CoolTextResult(
+                DefaultValues.NONE_STR.value, {}, DefaultValues.NONE_STR.value
+            )
+
         render_key = API.RENDER_LOCATION.value
         if render_key not in data:
-            logger.warning(
-                ExceptionMessages.UNEXPECTED_RESPONSE.value, render_key, data
+            logger.warning(LoggerMessages.UNEXPECTED_RESPONSE.value, render_key, data)
+            return CoolTextResult(
+                DefaultValues.NONE_STR.value, {}, DefaultValues.NONE_STR.value
             )
-            return None
+
         render_path = str(data[render_key]).replace(
             API.PROTOCOL.value, DefaultValues.NONE_STR.value
         )
-        return API.PROTOCOL.value + quote(render_path)
+        result_url = API.PROTOCOL.value + quote(render_path)
+        return CoolTextResult(
+            url=result_url, headers=headers, file_format=Extras.FILE_FORMAT.value
+        )

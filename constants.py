@@ -50,7 +50,22 @@ class ConfigFile(Enum):
     DEFAULTS = "defaults"
 
 
-class ExceptionMessages(Enum):
+class LoggerMessages(Enum):
     HTTP_REQUEST_FAILED = "HTTP request to CoolText failed: %s"
     JSON_DECODE_FAILED = "Failed to decode JSON response from CoolText"
     UNEXPECTED_RESPONSE = "Unexpected CoolText response, missing '%s': %s"
+    NO_URL_AVAILABLE = "Cannot download: No URL available"
+    DOWNLOADING_FROM = "Downloading from {0} to {1}"
+    SUCCESSFULLY_DOWNLOADED = "Successfully downloaded to {0}"
+    FAILED_TO_DOWNLOAD = "Failed to download image: {0}"
+    FAILED_TO_SAVE_FILE = "Failed to save file: {0}"
+    UNEXPECTED_ERROR = "Unexpected error during download: {0}"
+
+
+class Extras(Enum):
+    REPR_TEXT = "CoolTextResult(url='{0}')"
+    FILENAME_IF_NOT_DOT_IN_FILENAME_EARLIER = "cooltext{0}.{1}"
+    TEXT_QUESTION_MARK = "?"
+    TEXT_DOT = "."
+    OPEN_AS_WRITE_BINARY = "wb"
+    FILE_FORMAT = "png"
