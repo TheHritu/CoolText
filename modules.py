@@ -99,7 +99,6 @@ class CoolTextResult:
                     headers=self._headers,
                     timeout=timeout,
                     stream=True,
-                    verify=False,
                 )
                 response.raise_for_status()
                 with open(filepath, Extras.OPEN_AS_WRITE_BINARY.value) as f:

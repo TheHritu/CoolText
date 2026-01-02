@@ -20,6 +20,14 @@ A small Python helper for generating images using CoolText's PostChange API. Thi
 
 <img src='./results/sample4.png'></img>
 
+- Result with logo id - ```732453157```:
+
+<img src='./results/sample5.png'></img>
+
+- Result with logo id - ```1779834160```:
+
+<img src='./results/sample6.png'></img>
+
 ### <b>...And Many More Are Here...</b>
 
 **Features**
