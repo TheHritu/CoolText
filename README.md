@@ -1,5 +1,7 @@
 # CoolText
 
+###### I hope a STAR ⭐ from you 😊.
+
 A Python wrapper for the [CoolText.com](https://cooltext.com) image generation API.
 Build typed payloads, post to CoolText's `/PostChange` endpoint, and get back a
 rendered image URL — all in a few lines of code.
