@@ -1,4 +1,4 @@
-from modules import CoolText, PostChangeConfigOptions
+from cooltext.modules import CoolText, PostChangeConfigOptions
 
 config = PostChangeConfigOptions(LogoID="2975689126", Text="Hello World")
 result = CoolText(config).create()

@@ -1,5 +1,5 @@
 from enum import Enum
-from HyperUserAgent import HyperUA
+from fake_useragent import UserAgent
 
 
 class API(Enum):
@@ -24,7 +24,7 @@ class Requests(Enum):
     SEC_FETCH_SITE = "same-origin"
     SEC_GPC = "1"
     X_REQUESTED_WITH = "XMLHttpRequest"
-    USER_AGENT = str(HyperUA().chrome)
+    USER_AGENT = str(UserAgent(os=["Windows"]).chrome)
 
     @classmethod
     def header(cls, Referer) -> dict:
@@ -44,7 +44,6 @@ class DefaultValues(Enum):
 
 
 class ConfigFile(Enum):
-    LOGO_ID_FILE = "./logo-id.json"
     OPEN_TYPE = "r"
     LOGO_LINK = "LogoLink"
     DEFAULTS = "defaults"

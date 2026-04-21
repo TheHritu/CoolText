@@ -4,7 +4,7 @@
 
 import requests
 from bs4 import BeautifulSoup
-from HyperUserAgent import HyperUA
+from fake_useragent import UserAgent
 
 url = "https://cooltext.com/"
 headers = {
@@ -13,14 +13,13 @@ headers = {
     "content-type": "application/x-www-form-urlencoded; charset=UTF-8",
     "origin": "https://cooltext.com",
     "priority": "u=1, i",
-    "sec-ch-ua": '"Brave";v="143", "Chromium";v="143", "Not A(Brand";v="24"',
     "sec-ch-ua-mobile": "?0",
     "sec-ch-ua-platform": '"Windows"',
     "sec-fetch-dest": "empty",
     "sec-fetch-mode": "cors",
     "sec-fetch-site": "same-origin",
     "sec-gpc": "1",
-    "user-agent": str(HyperUA().chrome),
+    "user-agent": str(UserAgent(os=["Windows"]).chrome),
     "x-requested-with": "XMLHttpRequest",
 }
 rez = requests.get(url, headers=headers).content

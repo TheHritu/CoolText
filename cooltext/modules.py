@@ -1,11 +1,13 @@
 import os
 import json
+import urllib3
 import logging
 import requests
+import importlib.resources
 from typing import Optional
 from urllib.parse import quote
 from pydantic import BaseModel
-from constants import (
+from .constants import (
     API,
     Extras,
     Requests,
@@ -14,6 +16,7 @@ from constants import (
     LoggerMessages,
 )
 
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 class PostChangeConfigOptions(BaseModel):
     LogoID: str
@@ -99,6 +102,7 @@ class CoolTextResult:
                     headers=self._headers,
                     timeout=timeout,
                     stream=True,
+                    verify=False,
                 )
                 response.raise_for_status()
                 with open(filepath, Extras.OPEN_AS_WRITE_BINARY.value) as f:
@@ -107,7 +111,7 @@ class CoolTextResult:
                             f.write(chunk)
             else:
                 response = requests.get(
-                    self._url, headers=self._headers, timeout=timeout
+                    self._url, headers=self._headers, timeout=timeout, verify=False
                 )
                 response.raise_for_status()
                 with open(filepath, Extras.OPEN_AS_WRITE_BINARY.value) as f:
@@ -129,20 +133,21 @@ class CoolText:
     def __init__(self, config: PostChangeConfigOptions):
         self.config = config
 
+    def _load_logo_data(self) -> dict:
+        """Load logo-id.json from inside the installed package."""
+        ref = importlib.resources.files("cooltext").joinpath("logo-id.json")
+        with importlib.resources.as_file(ref) as path:
+            with open(path, ConfigFile.OPEN_TYPE.value) as f:
+                return json.load(f)
+
     def get_payload(self) -> dict:
         return self.config.model_dump(exclude_none=True)
 
     def get_defaults(self) -> dict:
-        link_ID_file = json.loads(
-            open(ConfigFile.LOGO_ID_FILE.value, ConfigFile.OPEN_TYPE.value).read()
-        )
-        return link_ID_file[self.config.LogoID][ConfigFile.DEFAULTS.value]
+        return self._load_logo_data()[self.config.LogoID][ConfigFile.DEFAULTS.value]
 
     def get_link(self) -> str:
-        link_ID_file = json.loads(
-            open(ConfigFile.LOGO_ID_FILE.value, ConfigFile.OPEN_TYPE.value).read()
-        )
-        return link_ID_file[self.config.LogoID][ConfigFile.LOGO_LINK.value]
+        return self._load_logo_data()[self.config.LogoID][ConfigFile.LOGO_LINK.value]
 
     def get_headers(self) -> dict:
         return Requests.header(Referer=self.get_link())

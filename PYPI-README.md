@@ -1,11 +1,8 @@
-# CoolText
+# pycooltext-api
 
 A Python wrapper for the [CoolText.com](https://cooltext.com) image generation API.
 Build typed payloads, post to CoolText's `/PostChange` endpoint, and get back a
 rendered image URL — all in a few lines of code.
-
-[![PyPI version](https://img.shields.io/pypi/v/pycooltext-api)](https://pypi.org/project/pycooltext-api/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 ## Installation
 
@@ -25,21 +22,10 @@ print(result)           # prints the image URL
 result.download()       # saves the image locally
 ```
 
-## Logo Previews
+## Browse Available Logos
 
-Browse all logos at **[https://thehritu.github.io/CoolText/](https://thehritu.github.io/CoolText/)**.
-Here are a few examples:
-
-| Logo ID | Preview |
-|---|---|
-| `4618063429` | ![](./results/sample.png) |
-| `8` | ![](./results/sample2.png) |
-| `2975689126` | ![](./results/sample3.png) |
-| `829964308` | ![](./results/sample4.png) |
-| `732453157` | ![](./results/sample5.png) |
-| `1779834160` | ![](./results/sample6.png) |
-
-...and many more on the [logo id list](https://thehritu.github.io/CoolText/).
+Visit **[https://thehritu.github.io/CoolText/](https://thehritu.github.io/CoolText/)** to browse
+all available logo styles and their IDs.
 
 ## Configuration
 
@@ -71,11 +57,16 @@ result.download("out.png")                # save to a specific path
 result.download("out.png", stream=False)  # disable streaming
 ```
 
-If anything fails, `create()` returns a falsy `CoolTextResult` and logs the error.
+## Finding a Logo ID
 
-## Contributing
+Go to **[https://thehritu.github.io/CoolText/](https://thehritu.github.io/CoolText/)** — every
+logo is listed with its ID and default configuration values.
 
-Contributions are welcome — open an issue or submit a pull request.
+## Links
+
+- **GitHub:** [https://github.com/TheHritu/CoolText](https://github.com/TheHritu/CoolText)
+- **Logo ID List:** [https://thehritu.github.io/CoolText/](https://thehritu.github.io/CoolText/)
+- **PyPI:** [https://pypi.org/project/pycooltext-api/](https://pypi.org/project/pycooltext-api/)
 
 ## License
 

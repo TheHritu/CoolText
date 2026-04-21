@@ -1,4 +1,4 @@
 beautifulsoup4==4.14.3
-hyperuseragent==1.1.1
+fake-useragent==2.2.0
 pydantic==2.12.5
 Requests==2.32.5
