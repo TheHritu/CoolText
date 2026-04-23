@@ -114,9 +114,3 @@ def scrape_logos():
             print(e)
 
     return data
-
-
-if __name__ == "__main__":
-    data = scrape_logos()
-    with open("logo_id.json", "w") as f:
-        json.dump(data, f, indent=4)
