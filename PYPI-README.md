@@ -7,7 +7,7 @@ rendered image URL — all in a few lines of code.
 ## Installation
 
 ```bash
-pip install pycooltext-api
+pip install pycooltext-api -U
 ```
 
 ## Quick Start
