@@ -24,4 +24,4 @@ Homepage = "https://github.com/TheHritu/CoolText"
 where = ["."]
 
 [tool.setuptools.package-data]
-cooltext = ["logo-id.json"] 
+cooltext = ["logo_id.json"]
