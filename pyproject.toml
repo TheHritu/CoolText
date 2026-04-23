@@ -20,6 +20,9 @@ dependencies = [
 [project.urls]
 Homepage = "https://github.com/TheHritu/CoolText"
 
+[project.scripts]
+cooltext = "cooltext.__main__:main"
+
 [tool.setuptools.packages.find]
 where = ["."]
 
