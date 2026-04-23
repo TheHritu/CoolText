@@ -57,6 +57,18 @@ Here are a few examples:
 | `Boolean1`–`Boolean3` | `str` | `None` | Logo-specific toggles |
 | `Integer1`–`Integer14_color` | `str` | `None` | Logo-specific numeric options |
 
+### Get default configuration values for a logo:
+
+Returns a dictionary of all default values for the given logo id
+
+```python
+from cooltext import CoolText, PostChangeConfigOptions
+
+config = PostChangeConfigOptions(LogoID="2975689126")
+defaults = CoolText(config).get_defaults()
+print(defaults)
+```
+
 ## `CoolTextResult`
 
 `CoolText.create()` returns a `CoolTextResult` object:
@@ -72,6 +84,41 @@ result.download("out.png", stream=False)  # disable streaming
 ```
 
 If anything fails, `create()` returns a falsy `CoolTextResult` and logs the error.
+
+## Search for logos by keyword:
+
+Search for logos on cooltext.com by keyword:
+
+```python
+from cooltext import CoolTextSearch
+results = CoolTextSearch().search("gold") # list of CoolTextSearchResult
+for result in results:
+    print(result.title, " - ", result.link)
+    print(result.to_dict())  # get title and link as a dictionary
+```
+
+## `CoolTextSearchResult`
+`CoolTextSearch.search()` returns a list of `CoolTextSearchResult` objects.
+
+`CoolTextSearchResult` has these attributes:
+- `title`: The logo's title (e.g. "Gold Text")
+- `link`: The URL to the logo's page on CoolText.com
+
+`CoolTextSearchResult` has these methods:
+- `to_dict()`: Returns a dictionary with the title and link
+
+```python
+from cooltext.modules import CoolTextSearchResult
+
+result = CoolTextSearchResult("Gold Text", "https://cooltext.com/Logo-ID/1234567890")
+print(result.title)  # "Gold Text"
+print(result.link)   # "https://cooltext.com/Logo-ID/1234567890"
+print(result.to_dict())  # {"title": "Gold Text", "link": "https://cooltext.com/Logo-ID/1234567890"}
+```
+
+## Coffee is love, coffee is life.
+
+<a href="https://www.buymeacoffee.com/hritu" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-yellow.png" alt="Buy Me A Coffee" style="height: 41px !important;width: 174px !important;" ></a>
 
 ## Contributing
 

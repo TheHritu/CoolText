@@ -5,8 +5,10 @@ import logging
 import requests
 import importlib.resources
 from typing import Optional
+from bs4 import BeautifulSoup
 from urllib.parse import quote
 from pydantic import BaseModel
+from dataclasses import dataclass
 from .constants import (
     API,
     Extras,
@@ -17,6 +19,7 @@ from .constants import (
 )
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+
 
 class PostChangeConfigOptions(BaseModel):
     LogoID: str
@@ -153,11 +156,16 @@ class CoolText:
         return Requests.header(Referer=self.get_link())
 
     def create(self) -> CoolTextResult:
-        logger = logging.getLogger(__name__)
-        url = API.PROTOCOL.value + API.BASE_URL.value + API.CHANGE_ENDPOINT.value
-        payload = {**self.get_payload(), **self.get_defaults()}
-        headers = self.get_headers()
-
+        try:
+            logger = logging.getLogger(__name__)
+            url = API.PROTOCOL.value + API.BASE_URL.value + API.CHANGE_ENDPOINT.value
+            payload = {**self.get_payload(), **self.get_defaults()}
+            headers = self.get_headers()
+        except KeyError as exc:
+            logger.exception(LoggerMessages.CHECK_LOGO_ID.value.format(exc))
+            return CoolTextResult(
+                DefaultValues.NONE_STR.value, {}, DefaultValues.NONE_STR.value
+            )
         try:
             with requests.Session() as s:
                 resp_get = s.get(self.get_link(), headers=headers, timeout=10)
@@ -166,7 +174,7 @@ class CoolText:
                 resp_post.raise_for_status()
                 data = resp_post.json()
         except requests.exceptions.RequestException as exc:
-            logger.exception(LoggerMessages.HTTP_REQUEST_FAILED.value, exc)
+            logger.exception(LoggerMessages.HTTP_REQUEST_FAILED.value.format(exc))
             return CoolTextResult(
                 DefaultValues.NONE_STR.value, {}, DefaultValues.NONE_STR.value
             )
@@ -178,7 +186,9 @@ class CoolText:
 
         render_key = API.RENDER_LOCATION.value
         if render_key not in data:
-            logger.warning(LoggerMessages.UNEXPECTED_RESPONSE.value, render_key, data)
+            logger.warning(
+                LoggerMessages.UNEXPECTED_RESPONSE.value.format(render_key, data)
+            )
             return CoolTextResult(
                 DefaultValues.NONE_STR.value, {}, DefaultValues.NONE_STR.value
             )
@@ -190,3 +200,82 @@ class CoolText:
         return CoolTextResult(
             url=result_url, headers=headers, file_format=Extras.FILE_FORMAT.value
         )
+
+
+@dataclass
+class CoolTextSearchResult:
+    title: str
+    link: str
+
+    def __bool__(self) -> bool:
+        return bool(self.title and self.link)
+
+    def __repr__(self) -> str:
+        return Extras.REPR_SEARCH_RESULT.value.format(self.title, self.link)
+
+    def __str__(self) -> str:
+        return Extras.STR_SEARCH_RESULT.value.format(self.title, self.link)
+
+    def __eq__(self, other: object) -> bool:
+        if not isinstance(other, CoolTextSearchResult):
+            return NotImplemented
+        return self.link == other.link
+
+    def __hash__(self) -> int:
+        return hash(self.link)
+
+    def to_dict(self) -> dict:
+        return {Extras.TEXT_TITLE.value: self.title, Extras.TEXT_LINK.value: self.link}
+
+
+class CoolTextSearch:
+    BASE_URL = API.PROTOCOL.value + API.BASE_URL.value
+    SEARCH_URL = BASE_URL + API.SEARCH_ENDPOINT.value
+    LOGO_PREFIX = BASE_URL + API.LOGO_URL_PREFIX.value
+    logger = logging.getLogger(__name__)
+
+    def __init__(self, timeout: int = 30) -> None:
+        self.timeout = timeout
+        self._session = requests.Session()
+
+    def search(self, query: str) -> list[CoolTextSearchResult]:
+        """Return a list of CoolTextSearchResult for the given query."""
+        if not query:
+            self.logger.error(LoggerMessages.QUERY_MUST_NOT_BE_EMPTY.value)
+            return []
+        response = self._session.get(
+            self.SEARCH_URL,
+            params={Extras.QUERY_PARAM.value: query},
+            timeout=self.timeout,
+        )
+        response.raise_for_status()
+        return self._parse(response.text)
+
+    def __call__(self, query: str) -> list[CoolTextSearchResult]:
+        return self.search(query)
+
+    def _parse(self, html: str) -> list[CoolTextSearchResult]:
+        soup = BeautifulSoup(html, Extras.BEAUTIFULSOUP_PARSER.value)
+        results: list[CoolTextSearchResult] = []
+
+        for link_tag in soup.select(Extras.SEARCH_LINK_CLASS.value):
+            href = link_tag.get(Extras.HREF_ATTR.value, DefaultValues.NONE_STR.value)
+            full_link = (
+                self.BASE_URL
+                + Extras.TEXT_FORWARD_SLASH.value
+                + href.lstrip(Extras.TEXT_FORWARD_SLASH.value)
+            )
+
+            if not full_link.startswith(self.LOGO_PREFIX):
+                continue
+
+            title_tag = link_tag.select_one(Extras.SEARCH_RESULT_BOLD_CLASS.value)
+            title = (
+                title_tag.get_text(strip=True)
+                if title_tag
+                else DefaultValues.NONE_STR.value
+            )
+
+            results.append(CoolTextSearchResult(title=title, link=full_link))
+
+        return results

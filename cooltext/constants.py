@@ -8,6 +8,9 @@ class API(Enum):
     RENDER_ENDPOINT = "/Render"
     CHANGE_ENDPOINT = "/PostChange"
     RENDER_LOCATION = "renderLocation"
+    # - Search API endpoints & stuffs --- IGNORE ---
+    SEARCH_ENDPOINT = "/Search"
+    LOGO_URL_PREFIX = "/Logo-"
 
 
 class Requests(Enum):
@@ -50,15 +53,18 @@ class ConfigFile(Enum):
 
 
 class LoggerMessages(Enum):
-    HTTP_REQUEST_FAILED = "HTTP request to CoolText failed: %s"
+    HTTP_REQUEST_FAILED = "HTTP request to CoolText failed: {0}"
     JSON_DECODE_FAILED = "Failed to decode JSON response from CoolText"
-    UNEXPECTED_RESPONSE = "Unexpected CoolText response, missing '%s': %s"
+    UNEXPECTED_RESPONSE = "Unexpected CoolText response, missing '{0}': {1}"
     NO_URL_AVAILABLE = "Cannot download: No URL available"
     DOWNLOADING_FROM = "Downloading from {0} to {1}"
     SUCCESSFULLY_DOWNLOADED = "Successfully downloaded to {0}"
     FAILED_TO_DOWNLOAD = "Failed to download image: {0}"
     FAILED_TO_SAVE_FILE = "Failed to save file: {0}"
     UNEXPECTED_ERROR = "Unexpected error during download: {0}"
+    CHECK_LOGO_ID = "Please check the LogoID and try again.\nError details: {0}"
+    # - Search logger messages --- IGNORE ---
+    QUERY_MUST_NOT_BE_EMPTY = "Query must not be empty."
 
 
 class Extras(Enum):
@@ -68,3 +74,14 @@ class Extras(Enum):
     TEXT_DOT = "."
     OPEN_AS_WRITE_BINARY = "wb"
     FILE_FORMAT = "png"
+    # - Search extras --- IGNORE ---
+    TEXT_FORWARD_SLASH = "/"
+    QUERY_PARAM = "Query"
+    BEAUTIFULSOUP_PARSER = "html.parser"
+    HREF_ATTR = "href"
+    SEARCH_LINK_CLASS = ".SearchLink"
+    SEARCH_RESULT_BOLD_CLASS = ".SearchResult b"
+    REPR_SEARCH_RESULT = "CoolTextSearchResult(title='{0}', link='{1}')"
+    STR_SEARCH_RESULT = "{0} → {1}"
+    TEXT_TITLE = "title"
+    TEXT_LINK = "link"
