@@ -137,8 +137,8 @@ class CoolText:
         self.config = config
 
     def _load_logo_data(self) -> dict:
-        """Load logo-id.json from inside the installed package."""
-        ref = importlib.resources.files("cooltext").joinpath("logo-id.json")
+        """Load logo_id.json from inside the installed package."""
+        ref = importlib.resources.files("cooltext").joinpath("logo_id.json")
         with importlib.resources.as_file(ref) as path:
             with open(path, ConfigFile.OPEN_TYPE.value) as f:
                 return json.load(f)

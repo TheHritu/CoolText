@@ -1,4 +1,4 @@
-# This file was used to generate logo-id.json,
+# This file was used to generate logo_id.json,
 
 # This has nothing to do with the main module functionality.
 
@@ -114,9 +114,3 @@ def scrape_logos():
             print(e)
 
     return data
-
-
-if __name__ == "__main__":
-    data = scrape_logos()
-    with open("logo-id.json", "w") as f:
-        json.dump(data, f, indent=4)
