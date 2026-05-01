@@ -31,17 +31,17 @@ all available logo styles and their IDs.
 
 `PostChangeConfigOptions` accepts these fields:
 
-| Field | Type | Default | Description |
-|---|---|---|---|
-| `LogoID` | `str` | required | ID of the CoolText logo style |
-| `Text` | `str` | `"Cool Text"` | Text to render |
-| `FontSize` | `str` | `"70"` | Font size |
-| `FileFormat` | `str` | `"PNG"` | Output format |
-| `BackgroundColor_color` | `str` | `"FFFFFF"` | Background colour (hex) |
-| `Color1_color` | `str` | `None` | Primary text colour |
-| `Color2_color` | `str` | `None` | Secondary colour |
-| `Boolean1`–`Boolean3` | `str` | `None` | Logo-specific toggles |
-| `Integer1`–`Integer14_color` | `str` | `None` | Logo-specific numeric options |
+| Field                        | Type  | Default       | Description                   |
+| ---------------------------- | ----- | ------------- | ----------------------------- |
+| `LogoID`                     | `str` | required      | ID of the CoolText logo style |
+| `Text`                       | `str` | `"Cool Text"` | Text to render                |
+| `FontSize`                   | `str` | `"70"`        | Font size                     |
+| `FileFormat`                 | `str` | `"PNG"`       | Output format                 |
+| `BackgroundColor_color`      | `str` | `"FFFFFF"`    | Background colour (hex)       |
+| `Color1_color`               | `str` | `None`        | Primary text colour           |
+| `Color2_color`               | `str` | `None`        | Secondary colour              |
+| `Boolean1`–`Boolean3`        | `str` | `None`        | Logo-specific toggles         |
+| `Integer1`–`Integer14_color` | `str` | `None`        | Logo-specific numeric options |
 
 ### Get default configuration values for a logo:
 
@@ -87,13 +87,16 @@ for result in results:
 ```
 
 ## `CoolTextSearchResult`
+
 `CoolTextSearch.search()` returns a list of `CoolTextSearchResult` objects.
 
 `CoolTextSearchResult` has these attributes:
+
 - `title`: The logo's title (e.g. "Gold Text")
 - `link`: The URL to the logo's page on CoolText.com
 
 `CoolTextSearchResult` has these methods:
+
 - `to_dict()`: Returns a dictionary with the title and link
 
 ```python
@@ -104,6 +107,73 @@ print(result.title)  # "Gold Text"
 print(result.link)   # "https://cooltext.com/Logo-ID/1234567890"
 print(result.to_dict())  # {"title": "Gold Text", "link": "https://cooltext.com/Logo-ID/1234567890"}
 ```
+
+---
+
+# CLI
+
+First, install the extra dependency:
+
+```bash
+pip install rich
+```
+
+---
+
+## Usage
+
+**No arguments** — launches an interactive prompt:
+
+```bash
+cooltext
+```
+
+**Quick create** — just pass your text directly:
+
+```bash
+cooltext "Hello World"
+```
+
+**Pick a specific logo:**
+
+```bash
+cooltext "Hello World" --logo 732453157
+```
+
+**Save the image to a file:**
+
+```bash
+cooltext "Hello World" --save output.png
+```
+
+**Plain output** (just the URL, no colors — useful for scripting):
+
+```bash
+cooltext "Hello World" --as-text
+```
+
+---
+
+## Search
+
+Find logo styles by keyword:
+
+```bash
+cooltext search fire
+cooltext search "neon" --limit 1
+```
+
+> **Add `--as-text` to get plain line-by-line output instead of a table.**
+
+## On Some OS
+
+On some operating systems, the CLI may not be available as `cooltext` immediately after installation. If you encounter a "command not found" error, try running it with Python:
+
+```bash
+python -m cooltext "Hello World"
+```
+
+---
 
 ## Links
 

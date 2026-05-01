@@ -6,7 +6,7 @@ A Python wrapper for the [CoolText.com](https://cooltext.com) image generation A
 Build typed payloads, post to CoolText's `/PostChange` endpoint, and get back a
 rendered image URL — all in a few lines of code.
 
-[![Version](https://img.shields.io/badge/Version-0.1.3-red)](https://pypi.org/project/pycooltext-api/)
+[![Version](https://img.shields.io/badge/Version-0.1.4-red)](https://pypi.org/project/pycooltext-api/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 ## Installation
@@ -32,13 +32,13 @@ result.download()       # saves the image locally
 Browse all logos at **[https://thehritu.github.io/CoolText/](https://thehritu.github.io/CoolText/)**.
 Here are a few examples:
 
-| Logo ID | Preview |
-|---|---|
-| `4618063429` | ![](./results/sample.png) |
-| `8` | ![](./results/sample2.png) |
+| Logo ID      | Preview                    |
+| ------------ | -------------------------- |
+| `4618063429` | ![](./results/sample.png)  |
+| `8`          | ![](./results/sample2.png) |
 | `2975689126` | ![](./results/sample3.png) |
-| `829964308` | ![](./results/sample4.png) |
-| `732453157` | ![](./results/sample5.png) |
+| `829964308`  | ![](./results/sample4.png) |
+| `732453157`  | ![](./results/sample5.png) |
 | `1779834160` | ![](./results/sample6.png) |
 
 ...and many more on the [logo id list](https://thehritu.github.io/CoolText/).
@@ -47,17 +47,17 @@ Here are a few examples:
 
 `PostChangeConfigOptions` accepts these fields:
 
-| Field | Type | Default | Description |
-|---|---|---|---|
-| `LogoID` | `str` | required | ID of the CoolText logo style |
-| `Text` | `str` | `"Cool Text"` | Text to render |
-| `FontSize` | `str` | `"70"` | Font size |
-| `FileFormat` | `str` | `"PNG"` | Output format |
-| `BackgroundColor_color` | `str` | `"FFFFFF"` | Background colour (hex) |
-| `Color1_color` | `str` | `None` | Primary text colour |
-| `Color2_color` | `str` | `None` | Secondary colour |
-| `Boolean1`–`Boolean3` | `str` | `None` | Logo-specific toggles |
-| `Integer1`–`Integer14_color` | `str` | `None` | Logo-specific numeric options |
+| Field                        | Type  | Default       | Description                   |
+| ---------------------------- | ----- | ------------- | ----------------------------- |
+| `LogoID`                     | `str` | required      | ID of the CoolText logo style |
+| `Text`                       | `str` | `"Cool Text"` | Text to render                |
+| `FontSize`                   | `str` | `"70"`        | Font size                     |
+| `FileFormat`                 | `str` | `"PNG"`       | Output format                 |
+| `BackgroundColor_color`      | `str` | `"FFFFFF"`    | Background colour (hex)       |
+| `Color1_color`               | `str` | `None`        | Primary text colour           |
+| `Color2_color`               | `str` | `None`        | Secondary colour              |
+| `Boolean1`–`Boolean3`        | `str` | `None`        | Logo-specific toggles         |
+| `Integer1`–`Integer14_color` | `str` | `None`        | Logo-specific numeric options |
 
 ### Get default configuration values for a logo:
 
@@ -100,13 +100,16 @@ for result in results:
 ```
 
 ## `CoolTextSearchResult`
+
 `CoolTextSearch.search()` returns a list of `CoolTextSearchResult` objects.
 
 `CoolTextSearchResult` has these attributes:
+
 - `title`: The logo's title (e.g. "Gold Text")
 - `link`: The URL to the logo's page on CoolText.com
 
 `CoolTextSearchResult` has these methods:
+
 - `to_dict()`: Returns a dictionary with the title and link
 
 ```python
@@ -117,6 +120,77 @@ print(result.title)  # "Gold Text"
 print(result.link)   # "https://cooltext.com/Logo-ID/1234567890"
 print(result.to_dict())  # {"title": "Gold Text", "link": "https://cooltext.com/Logo-ID/1234567890"}
 ```
+
+---
+
+# CLI
+
+First, install the extra dependency:
+
+```bash
+pip install rich
+```
+
+---
+
+## Usage
+
+**No arguments** — launches an interactive prompt:
+
+```bash
+cooltext
+```
+
+**Quick create** — just pass your text directly:
+
+```bash
+cooltext "Hello World"
+```
+
+**Pick a specific logo:**
+
+```bash
+cooltext "Hello World" --logo 732453157
+```
+
+**Save the image to a file:**
+
+```bash
+cooltext "Hello World" --save output.png
+```
+
+**Plain output** (just the URL, no colors — useful for scripting):
+
+```bash
+cooltext "Hello World" --as-text
+```
+
+---
+
+## Search
+
+Find logo styles by keyword:
+
+```bash
+cooltext search fire
+cooltext search "neon" --limit 1
+```
+
+> **Add `--as-text` to get plain line-by-line output instead of a table.**
+
+## On Some OS
+
+On some operating systems, the CLI may not be available as `cooltext` immediately after installation. If you encounter a "command not found" error, try running it with Python:
+
+```bash
+python -m cooltext "Hello World"
+```
+
+---
+
+# Finding Logo IDs
+
+Browse all available logos at **https://thehritu.github.io/CoolText** and copy the ID from the URL.
 
 ## Coffee is love, coffee is life.
 
