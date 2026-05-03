@@ -6,7 +6,7 @@ A Python wrapper for the [CoolText.com](https://cooltext.com) image generation A
 Build typed payloads, post to CoolText's `/PostChange` endpoint, and get back a
 rendered image URL — all in a few lines of code.
 
-[![Version](https://img.shields.io/badge/Version-0.1.4-red)](https://pypi.org/project/pycooltext-api/)
+[![Version](https://img.shields.io/badge/Version-0.1.5-red)](https://pypi.org/project/pycooltext-api/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 ## Installation
