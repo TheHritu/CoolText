@@ -63,6 +63,7 @@ class LoggerMessages(Enum):
     FAILED_TO_SAVE_FILE = "Failed to save file: {0}"
     UNEXPECTED_ERROR = "Unexpected error during download: {0}"
     CHECK_LOGO_ID = "Please check the LogoID and try again.\nError details: {0}"
+    BACKGROUND_COLOR_IS_THERE_BUT_FILE_FORMAT_IS_PNG = "Background color is provided but file format is PNG, which does not support background colors. Please change the file format or remove the background color\nChange to \033[92m FileFormat = '4' \033[0m for BackgroundColor_color to work.\n"
     # - Search logger messages --- IGNORE ---
     QUERY_MUST_NOT_BE_EMPTY = "Query must not be empty."
 
@@ -72,8 +73,11 @@ class Extras(Enum):
     FILENAME_IF_NOT_DOT_IN_FILENAME_EARLIER = "cooltext{0}.{1}"
     TEXT_QUESTION_MARK = "?"
     TEXT_DOT = "."
+    TEXT_SIX = "6"
     OPEN_AS_WRITE_BINARY = "wb"
     FILE_FORMAT = "png"
+    BACKGROUNDCOLOR_COLOR_STRING = "BackgroundColor_color"
+    FILE_FORMAT_STRING = "FileFormat"
     # - Search extras --- IGNORE ---
     TEXT_FORWARD_SLASH = "/"
     QUERY_PARAM = "Query"

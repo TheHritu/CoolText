@@ -43,6 +43,19 @@ all available logo styles and their IDs.
 | `Boolean1`–`Boolean3`        | `str` | `None`        | Logo-specific toggles         |
 | `Integer1`–`Integer14_color` | `str` | `None`        | Logo-specific numeric options |
 
+### FileFormat options:
+
+`FileFormat` accepts these values:
+
+| Value | Format                                                             |
+| ----- | ------------------------------------------------------------------ |
+| `1`   | GIF with background color (if `BackgroundColor_color` is provided) |
+| `2`   | GIF (Transparent)                                                  |
+| `3`   | GIF (Transparent With No Dither)                                   |
+| `4`   | JPG with background color (if `BackgroundColor_color` is provided) |
+| `5`   | PNG with background color (if `BackgroundColor_color` is provided) |
+| `6`   | PNG (Transparent)                                                  |
+
 ### Get default configuration values for a logo:
 
 Returns a dictionary of all default values for the given logo id

@@ -159,12 +159,28 @@ class CoolText:
         try:
             logger = logging.getLogger(__name__)
             url = API.PROTOCOL.value + API.BASE_URL.value + API.CHANGE_ENDPOINT.value
-            payload = {**self.get_payload(), **self.get_defaults()}
+            default_values = self.get_defaults()
+            payload = {**default_values, **self.get_payload()}
             headers = self.get_headers()
         except KeyError as exc:
             logger.exception(LoggerMessages.CHECK_LOGO_ID.value.format(exc))
             return CoolTextResult(
                 DefaultValues.NONE_STR.value, {}, DefaultValues.NONE_STR.value
+            )
+        if (
+            not payload.get(Extras.BACKGROUNDCOLOR_COLOR_STRING.value)
+            == default_values.get(
+                Extras.BACKGROUNDCOLOR_COLOR_STRING.value, DefaultValues.NONE_STR.value
+            )
+            and str(
+                payload.get(
+                    Extras.FILE_FORMAT_STRING.value, DefaultValues.NONE_STR.value
+                )
+            )
+            == Extras.TEXT_SIX.value
+        ):
+            logger.warning(
+                LoggerMessages.BACKGROUND_COLOR_IS_THERE_BUT_FILE_FORMAT_IS_PNG.value
             )
         try:
             with requests.Session() as s:
