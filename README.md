@@ -47,17 +47,17 @@ Here are a few examples:
 
 `PostChangeConfigOptions` accepts these fields:
 
-| Field                                                                   | Type  | Default       | Description                   |
-| ----------------------------------------------------------------------- | ----- | ------------- | ----------------------------- |
-| `LogoID`                                                                | `str` | required      | ID of the CoolText logo style |
-| `Text`                                                                  | `str` | `"Cool Text"` | Text to render                |
-| `FontSize`                                                              | `str` | `"70"`        | Font size                     |
-| `[FileFormat](https://github.com/TheHritu/CoolText#fileformat-options)` | `str` | `"PNG"`       | Output format                 |
-| `BackgroundColor_color`                                                 | `str` | `"FFFFFF"`    | Background colour (hex)       |
-| `Color1_color`                                                          | `str` | `None`        | Primary text colour           |
-| `Color2_color`                                                          | `str` | `None`        | Secondary colour              |
-| `Boolean1`–`Boolean3`                                                   | `str` | `None`        | Logo-specific toggles         |
-| `Integer1`–`Integer14_color`                                            | `str` | `None`        | Logo-specific numeric options |
+| Field                        | Type  | Default       | Description                     |
+| ---------------------------- | ----- | ------------- | ------------------------------- |
+| `LogoID`                     | `str` | required      | ID of the CoolText logo style   |
+| `Text`                       | `str` | `"Cool Text"` | Text to render                  |
+| `FontSize`                   | `str` | `"70"`        | Font size                       |
+| `FileFormat`                 | `str` | `"PNG"`       | Output format (See table below) |
+| `BackgroundColor_color`      | `str` | `"FFFFFF"`    | Background colour (hex)         |
+| `Color1_color`               | `str` | `None`        | Primary text colour             |
+| `Color2_color`               | `str` | `None`        | Secondary colour                |
+| `Boolean1`–`Boolean3`        | `str` | `None`        | Logo-specific toggles           |
+| `Integer1`–`Integer14_color` | `str` | `None`        | Logo-specific numeric options   |
 
 ### FileFormat options:
 
